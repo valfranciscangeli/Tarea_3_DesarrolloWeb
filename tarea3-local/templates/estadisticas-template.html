@@ -1,0 +1,130 @@
+<!-- /* Código HTML para página de estadísticas. 
+
+El documento puede contener inserción de CSS y Javascript según necesidad para mayor claridad y/o simplicidad de programación.
+
+Se utiliza Chart.js
+
+Por Valeria Vallejos Franciscangeli 
+Para CC5002- Otoño 2022 */
+
+
+/* =========================INICIO DEL DOCUMENTO================================ */ -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+
+  <link rel="stylesheet" href="../css/style-estadisticas.css">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-blue-grey.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css">
+
+  <title>HobbyApp - Estadísticas</title>
+  <link rel="icon" href="img/icono-nf2.png" type="image/icon"> <!-- icono-->
+
+</head>
+
+<body>
+  <!--- links -->
+  <div class="w3-bar w3-theme-light">
+    <a href="../cgi-bin/portada.py" class="w3-bar-item w3-button w3-padding-16">Inicio</a>
+    <a href="../cgi-bin/formulario.py" class="w3-bar-item w3-button w3-padding-16">Informar actividad</a>
+    <a href=../cgi-bin/listado.py class="w3-bar-item w3-button w3-padding-16">Ver listado de Actividades</a>
+    <a href=# class="w3-bar-item w3-button w3-padding-16">Estadísticas</a>
+  </div>
+
+
+  <!-- Header -->
+  <header class="w3-container w3-theme w3-padding" id="myHeader">
+    <div class="w3-center">
+      <h1 class="w3-xxxlarge w3-animate-bottom">HobbyApp</h1>
+      <h4>Bienvenide a HobbyApp! Aquí puedes encontrar entretenidas actividades para conectarte con tu comunidad y crear
+        nuevas amistades</h4>
+    </div>
+  </header>
+  <!-- ########################################### -->
+
+  <h2 class="w3-center">Estadísticas de las actividades ingresadas</h2>
+  <div class="w3-border">
+    <div class="w3-bar w3-theme">
+      <button class="w3-bar-item w3-button testbtn w3-padding-16" onclick="openGraph(event,'lineas')">Cantidad de
+        actividades totales por día</button>
+      <button class="w3-bar-item w3-button testbtn w3-padding-16" onclick="openGraph(event,'tortas')">Cantidad de
+        actividades totales según categoría</button>
+      <button class="w3-bar-item w3-button testbtn w3-padding-16" onclick="openGraph(event,'barras')">Total de
+        actividades mensuales según horario</button>
+    </div>
+
+    <div id="lineas" class="w3-container city w3-animate-opacity">
+      <h2>Cantidad de actividades totales por día</h2>
+      <canvas id="linea" class="grafico"></canvas>
+      <p>En este gráfico se representa la totalidad de actividades registradas para cada día hasta el momento.</p>
+    </div>
+
+    <div id="tortas" class="w3-container city w3-animate-opacity">
+      <h2>Cantidad de actividades totales según categoría</h2>
+      <canvas id="torta" class="grafico"></canvas>
+      <p>En este gráfico se representa la cantidad total de actividades registradas al momento en cada categoría.</p>
+    </div>
+
+    <div id="barras" class="w3-container city w3-animate-opacity">
+      <h2>Total de actividades mensuales según horario de inicio</h2>
+      <canvas id="barra" class="grafico"></canvas>
+      <p>En este gráfico se representa la cantidad total de actividades registradas al momento por mes, según su hora de
+        inicio. </p>
+    </div>
+  </div> <br> <br>
+  <!-- ###########################################33 -->
+
+  <!-- Footer -->
+  <footer class="w3-container w3-theme-dark w3-padding-16">
+    <h3>HobbyApp - 2022</h3>
+    <p>Plantillas de <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
+    <a href="../cgi-bin/portada.py" class='w3-bar-item w3-button w3-theme w3-hover-theme'
+      style="text-align: center;">Home</a>
+    <div style="position:relative;bottom:55px;" class="w3-tooltip w3-right">
+      <span class="w3-text w3-theme-light w3-padding">Go To Top</span>
+      <a class="w3-text-white" href="#myHeader"><span class="w3-xlarge">
+          <i class="fa fa-chevron-circle-up"></i></span></a>
+    </div>
+  </footer>
+
+
+  <script>
+
+    {0}
+
+    {1}
+
+    {2}
+
+    function openGraph(evt, cityName) {{
+      let i;
+      let x = document.getElementsByClassName("city");
+      for (i = 0; i < x.length; i++) {{
+        x[i].style.display = "none";
+      }}
+      let activebtn = document.getElementsByClassName("testbtn");
+      for (i = 0; i < x.length; i++) {{
+        activebtn[i].className = activebtn[i].className.replace(" w3-dark-grey", "");
+      }}
+      document.getElementById(cityName).style.display = "block";
+      evt.currentTarget.className += " w3-dark-grey";
+    }}
+
+    let mybtn = document.getElementsByClassName("testbtn")[0];
+    mybtn.click();
+
+
+  </script>
+
+
+</body>
+
+</html>

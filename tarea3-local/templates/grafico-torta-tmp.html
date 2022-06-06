@@ -1,0 +1,34 @@
+// grafico de torta =====================---------------------
+
+    xValues = ["Música", "Deporte", "Ciencias", "Religión", "Política", "Tecnología", "Juegos", "Baile", "Comida", "Otro"];
+    yValues = [80, 137, 108, 18, 34, 115, 142, 152, 158, 171];
+    let barColors = [
+      "#022F40",
+      "#546363",
+      "#846C5B",
+      "#ECE7AC",
+      "#74D3AE",
+      "#7A9CC6",
+      "#F49CBB",
+      "#D8A7CA",
+      "#F7B2AD",
+      "#9368B7"
+
+    ];
+
+    new Chart("torta", {
+      type: "pie",
+      data: {
+        labels: xValues,
+        datasets: [{
+          backgroundColor: barColors,
+          data: yValues
+        }]
+      },
+      options: {
+        title: {
+          display: false,
+          text: "Cantidad de actividades totales según categoría"
+        }
+      }
+    });
