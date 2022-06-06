@@ -284,4 +284,11 @@ class DB:
         '''
         self.cursor.execute(sql)
         return self.cursor.fetchall()[0][0]
+
+    def get_comuna_por_nombre(self, nombre):
+        sql = f'''
+                    SELECT id from comuna WHERE nombre='{nombre}';
+                '''
+        self.cursor.execute(sql)
+        return self.cursor.fetchall()[0][0]
     

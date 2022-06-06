@@ -68,11 +68,12 @@ Para CC5002- Otoño 2022 */
 
     <script>
         // seting map origin ===========================
-        var map = L.map('map').setView([-33.457626160935035, -70.6642218597435], 13);
+        var map = L.map('map').setView([-33.457626160935035, -70.6642218597435], 15);
         L.tileLayer('https://{{s}}.tile.openstreetmap.org/{{z}}/{{x}}/{{y}}.png', {{
             maxZoom: 19,
             attribution: '© OpenStreetMap'
         }}).addTo(map);
+        map.on('click', onMapClick);
 
         // events =======================================
 
@@ -96,7 +97,7 @@ Para CC5002- Otoño 2022 */
             .bindPopup("<b>Aqui esta el subway</b><br>I am a popup.")
             .openPopup();
 
-        map.on('click', onMapClick);
+
     </script>
 
     <!-- =================== fin =================== -->

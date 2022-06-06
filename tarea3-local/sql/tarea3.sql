@@ -5,19 +5,19 @@ SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 
 -- -----------------------------------------------------
--- Schema tarea2
+-- Schema tarea3
 -- -----------------------------------------------------
 
 -- -----------------------------------------------------
--- Schema tarea2
+-- Schema tarea3
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `tarea2` DEFAULT CHARACTER SET utf8 ;
-USE `tarea2` ;
+CREATE SCHEMA IF NOT EXISTS `tarea3` DEFAULT CHARACTER SET utf8 ;
+USE `tarea3` ;
 
 -- -----------------------------------------------------
--- Table `tarea2`.`region`
+-- Table `tarea3`.`region`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `tarea2`.`region` (
+CREATE TABLE IF NOT EXISTS `tarea3`.`region` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `nombre` VARCHAR(200) NOT NULL,
   PRIMARY KEY (`id`))
@@ -25,9 +25,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `tarea2`.`comuna`
+-- Table `tarea3`.`comuna`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `tarea2`.`comuna` (
+CREATE TABLE IF NOT EXISTS `tarea3`.`comuna` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `nombre` VARCHAR(200) NOT NULL,
   `region_id` INT NOT NULL,
@@ -35,16 +35,16 @@ CREATE TABLE IF NOT EXISTS `tarea2`.`comuna` (
   INDEX `fk_comuna_region1_idx` (`region_id` ASC),
   CONSTRAINT `fk_comuna_region1`
     FOREIGN KEY (`region_id`)
-    REFERENCES `tarea2`.`region` (`id`)
+    REFERENCES `tarea3`.`region` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `tarea2`.`tema`
+-- Table `tarea3`.`tema`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `tarea2`.`tema` (
+CREATE TABLE IF NOT EXISTS `tarea3`.`tema` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `nombre` VARCHAR(15) NOT NULL,
   PRIMARY KEY (`id`))
@@ -52,9 +52,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `tarea2`.`actividad`
+-- Table `tarea3`.`actividad`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `tarea2`.`actividad` (
+CREATE TABLE IF NOT EXISTS `tarea3`.`actividad` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `comuna_id` INT NOT NULL,
   `sector` VARCHAR(100) NULL,
@@ -70,21 +70,21 @@ CREATE TABLE IF NOT EXISTS `tarea2`.`actividad` (
   INDEX `fk_actividad_tema1_idx` (`tema_id` ASC),
   CONSTRAINT `fk_evento_comuna1`
     FOREIGN KEY (`comuna_id`)
-    REFERENCES `tarea2`.`comuna` (`id`)
+    REFERENCES `tarea3`.`comuna` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_actividad_tema1`
     FOREIGN KEY (`tema_id`)
-    REFERENCES `tarea2`.`tema` (`id`)
+    REFERENCES `tarea3`.`tema` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `tarea2`.`foto`
+-- Table `tarea3`.`foto`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `tarea2`.`foto` (
+CREATE TABLE IF NOT EXISTS `tarea3`.`foto` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `ruta_archivo` VARCHAR(300) NOT NULL,
   `nombre_archivo` VARCHAR(300) NOT NULL,
@@ -93,16 +93,16 @@ CREATE TABLE IF NOT EXISTS `tarea2`.`foto` (
   INDEX `fk_foto_actividad1_idx` (`actividad_id` ASC),
   CONSTRAINT `fk_foto_actividad1`
     FOREIGN KEY (`actividad_id`)
-    REFERENCES `tarea2`.`actividad` (`id`)
+    REFERENCES `tarea3`.`actividad` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `tarea2`.`contactar_por`
+-- Table `tarea3`.`contactar_por`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `tarea2`.`contactar_por` (
+CREATE TABLE IF NOT EXISTS `tarea3`.`contactar_por` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `nombre` ENUM('whatsapp', 'telegram', 'twitter', 'facebook', 'instagram', 'tiktok', 'otra') NOT NULL,
   `identificador` VARCHAR(150) NOT NULL,
@@ -111,7 +111,7 @@ CREATE TABLE IF NOT EXISTS `tarea2`.`contactar_por` (
   INDEX `fk_contactar_por_actividad1_idx` (`actividad_id` ASC),
   CONSTRAINT `fk_contactar_por_actividad1`
     FOREIGN KEY (`actividad_id`)
-    REFERENCES `tarea2`.`actividad` (`id`)
+    REFERENCES `tarea3`.`actividad` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
