@@ -73,9 +73,9 @@ for p in data:
     """
     fecha_hora_inicio = p[6]
     fecha_hora_termino = p[7]
-    comuna = p[1]
+    comuna = p[1].title()
     sector = p[2]
-    tema = p[9]
+    tema = p[9].title()
 
     fotos = db.get_fotos(p[0])  # DEVUELVE = (id, ruta_archivo, nombre_archivo, actividad_id)
     texto_alt_de_imagen = ""
