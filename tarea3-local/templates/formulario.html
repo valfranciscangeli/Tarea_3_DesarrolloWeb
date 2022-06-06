@@ -1,0 +1,318 @@
+<!-- /* Código HTML para formulario de ingreso de actividades. 
+
+El documento puede contener inserción de CSS y Javascript según necesidad para mayor claridad y/o simplicidad de programación.
+
+Por Valeria Vallejos Franciscangeli 
+Para CC5002- Otoño 2022 */
+
+
+/* =========================INICIO DEL DOCUMENTO================================ */ -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="/js/form-actividades.js"></script>
+    <link rel="stylesheet" href="css/style-form-actividades.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-blue-grey.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css">
+
+    <title>HobbyApp - Agregar actividad</title>
+    <link rel="icon" href="img/icono-nf2.png" type="image/icon"> <!-- icono-->
+</head>
+
+<body onload="fecha()">
+
+    <!--- links -->
+    <div class="w3-bar w3-theme-light">
+        <a href="./portada.py" class="w3-bar-item w3-button w3-padding-16">Inicio</a>
+        <a href="./formulario.py" class="w3-bar-item w3-button w3-padding-16">Informar actividad</a>
+        <a href=./listado.py class="w3-bar-item w3-button w3-padding-16">Ver listado de Actividades</a>
+        <a href=../estadisticas.html class="w3-bar-item w3-button w3-padding-16">Estadísticas</a>
+    </div>
+
+
+    <!-- Header -->
+    <header class="w3-container w3-theme w3-padding" id="myHeader">
+        <div class="w3-center">
+            <h1 class="w3-xxxlarge w3-animate-bottom">HobbyApp</h1>
+            <h4>Bienvenide a HobbyApp! Aquí puedes encontrar entretenidas actividades para conectarte con tu comunidad y
+                crear nuevas amistades</h4>
+        </div>
+    </header>
+
+    <!-- ###########################################33 -->
+
+    <div class="w3-container">
+        <form id="formulario" class="w3-container w3-card-4" action="save_actividad.py" method="POST">
+            <h2>Ingresa una nueva actividad:</h2>
+
+            <!-- ########### seccion 1 ########### -->
+
+            <h3>¿Dónde?</h3>
+
+            <!-- region -->
+            <div class="w3-section">
+                <label for="region">Región(*):</label>
+                <select name="region" id="region" onchange="input_comuna()">
+                    <option value="" disabled selected>Seleccione una región</option>
+                    <option value="tarapaca">I Región de Tarapacá</option>
+                    <option value="antofagasta">II Región de Antofagasta</option>
+                    <option value="atacama">III Región de Atacama</option>
+                    <option value="coquimbo">IV Región de Coquimbo</option>
+                    <option value="valparaiso">V Región de Valparaíso</option>
+                    <option value="ohiggins">VI Región del Libertador General Bernardo O’Higgins</option>
+                    <option value="maule">VII Región del Maule</option>
+                    <option value="biobio">VIII Región del Biobío</option>
+                    <option value="araucania">IX Región de La Araucanía</option>
+                    <option value="lagos">X Región de Los Lagos</option>
+                    <option value="aysen">XI Región Aysén del General Carlos Ibáñez del Campo</option>
+                    <option value="magallanes">XII Región de Magallanes y Antártica Chilena</option>
+                    <option value="santiago">Región Metropolitana de Santiago</option>
+                    <option value="rios">XIV Región de Los Ríos</option>
+                    <option value="arica">XV Región de Arica y Parinacota</option>
+                    <option value="nuble">XVI Región de Ñuble</option>
+                </select>
+            </div>
+
+            <!-- comuna -->
+            <div class="w3-section">
+                <label for="comuna">Comuna(*):</label>
+                <select name="comuna" id="comuna"></select><br>
+            </div>
+
+            <!-- sector -->
+            <div class="w3-section">
+                <label for="sector">Sector:</label>
+                <input type="text" class="w3-input" name="sector" id="sector"
+                    placeholder="Calle Principal 123, sector plaza." size="100"><br>
+            </div>
+
+            <!-- ########### seccion 2 ########### -->
+            <h2>¿Quién organiza?</h2>
+
+            <!-- nombre -->
+            <div class="w3-section">
+                <label for="nombre">Nombre(*):</label>
+                <input type="text" class="w3-input" name="nombre" id="nombre" size="100" placeholder="Juan Pérez"><br>
+            </div>
+
+            <!-- email -->
+            <div class="w3-section">
+                <label for="email">Correo electrónico(*):</label>
+                <input type="text" class="w3-input" name="email" id="email" placeholder="hola@correo.com"
+                    size="100"><br>
+            </div>
+
+            <!-- numero de celular -->
+            <div class="w3-section">
+                <label for="celular">Teléfono celular:</label>
+                <input type="text" class="w3-input" name="celular" id="celular" size="15"
+                    placeholder="+56 9 1234 5678"><br>
+            </div>
+
+            <!-- contactar por -->
+            <div class="w3-section">
+                <div id="div-contactar-por">
+                    <label>Contacto: (seleccione máximo 5)</label><br><br>
+
+                    <input type="checkbox" id="whatsapp" name="contactar-por" value="whatsapp"
+                        onclick="agregaUsuarioURL('whatsapp', 'ws-input')">
+                    <label for="whatsapp" id="whatsapp-label">WhatsApp</label>
+                    <div id="ws-input" style="display:none">
+                        <label for="whatsapp-usuario">Usuario / URL:</label>
+                        <input type="text" name="whatsapp-usuario" id="whatsapp-usuario"><br>
+                    </div><br>
+
+                    <input type="checkbox" id="telegram" name="contactar-por" value="telegram"
+                        onclick="agregaUsuarioURL('telegram', 'tl-input')">
+                    <label for="telegram">Telegram</label>
+                    <div id="tl-input" style="display:none">
+                        <label for="telegram-usuario">Usuario / URL:</label>
+                        <input type="text" name="telegram-usuario" id="telegram-usuario"><br>
+                    </div><br>
+
+                    <input type="checkbox" id="twitter" name="contactar-por" value="twitter"
+                        onclick="agregaUsuarioURL('twitter', 'tw-input')">
+                    <label for="twitter">Twitter</label>
+                    <div id="tw-input" style="display:none">
+                        <label for="twitter-usuario">Usuario / URL:</label>
+                        <input type="text" name="twitter-usuario" id="twitter-usuario"><br>
+                    </div><br>
+
+                    <input type="checkbox" id="instagram" name="contactar-por" value="instagram"
+                        onclick="agregaUsuarioURL('instagram', 'ig-input')">
+                    <label for="instagram">Instagram</label>
+                    <div id="ig-input" style="display:none">
+                        <label for="instagram-usuario">Usuario / URL:</label>
+                        <input type="text" name="instagram-usuario" id="instagram-usuario"><br>
+                    </div><br>
+
+                    <input type="checkbox" id="facebook" name="contactar-por" value="facebook"
+                        onclick="agregaUsuarioURL('facebook', 'fb-input')">
+                    <label for="facebook">Facebook</label>
+                    <div id="fb-input" style="display:none">
+                        <label for="facebook-usuario">Usuario / URL:</label>
+                        <input type="text" name="facebook-usuario" id="facebook-usuario"><br>
+                    </div> <br>
+
+                    <input type="checkbox" id="tiktok" name="contactar-por" value="tiktok"
+                        onclick="agregaUsuarioURL('tiktok', 'tt-input')">
+                    <label for="tiktok">TikTok</label>
+                    <div id="tt-input" style="display:none">
+                        <label for="tiktok-usuario">Usuario / URL:</label>
+                        <input type="text" name="tiktok-usuario" id="tiktok-usuario"><br>
+                    </div> <br>
+
+                    <input type="checkbox" id="otro" name="contactar-por" value="otro"
+                        onclick="agregaUsuarioURL('otro', 'otro-input')">
+                    <label for="otro">Otro</label>
+                    <div id="otro-input" style="display:none">
+                        <label for="otra-red">Red Social:</label>
+                        <input type="text" name="otra-red" id="otra-red">
+                        <label for="otro-usuario">Usuario / URL:</label>
+                        <input type="text" name="otro-usuario" id="otro-usuario">
+                    </div> <br>
+
+                </div>
+            </div>
+
+            <!-- ########### seccion 3 ########### -->
+            <h2>¿Cuándo y de qué trata?</h2>
+
+            <!-- dia hora inicio -->
+            <div class="w3-section">
+                <label for="dia-hora-inicio">Día y hora de inicio(*):</label>
+                <input type="text" class="w3-input" id="dia-hora-inicio" name="dia-hora-inicio" size="20"><br>
+            </div>
+
+            <!-- dia hora termino -->
+            <div class="w3-section">
+                <label for="dia-hora-termino">Día y hora de termino:</label>
+                <input type="text" class="w3-input" id="dia-hora-termino" name="dia-hora-termino" size="20"><br>
+            </div>
+
+            <!-- descripcion -->
+            <div class="w3-section">
+                <label for="descripcion-evento">Descripción:</label><br>
+                <textarea name="descripcion-evento" id="descripcion-evento" cols="50" rows="10"></textarea><br>
+            </div><br>
+
+            <!-- tema -->
+            <div class="w3-section">
+                <label for="tema">Tema(*):</label>
+                <select name="tema" id="tema" onchange="nuevo_tema()">
+                    <option value="" disabled selected>Seleccione un tema</option>
+                    <option value="musica">Música</option>
+                    <option value="deporte">Deporte</option>
+                    <option value="ciencias">Ciencias</option>
+                    <option value="religion">Religión</option>
+                    <option value="politica">Política</option>
+                    <option value="tecnologia">Tecnología</option>
+                    <option value="juegos">Juegos</option>
+                    <option value="baile">Baile</option>
+                    <option value="comida">Comida</option>
+                    <option value="otro">Otro</option>
+                </select>
+                <div id="otro_tema"></div>
+            </div> <br>
+
+            <!-- foto -->
+            <label for="foto-actividad1">Fotos(*): (puede cargar de 1 a 5 imágenes) </label><br>
+            <div class="w3-section" id="fotos">
+
+                <div id="contenedor-foto1">
+                    <input type="file" id="foto-actividad1" name="foto-actividad" accept="image/*">
+                    <button type="button" class="w3-button w3-theme w3-round-xxlarge" onclick="agregarImagen()">Agregar
+                        otra
+                        foto</button>
+                </div>
+
+                <div id="contenedor-foto2"></div>
+                <div id="contenedor-foto3"></div>
+                <div id="contenedor-foto4"></div>
+                <div id="contenedor-foto5"></div>
+
+            </div><br>
+            <!-- ########################################################## -->
+            <!-- SUBMIT-->
+
+            <div class="w3-section">
+                <input type="submit" class="w3-button w3-black" value="Agregar esta actividad">
+            </div>
+
+
+            <small>(*) Datos obligatorios.</small>
+
+        </form><br> <br>
+
+    </div>
+    <!-- ###################### confirmación de formulario #################################### -->
+
+    <div id="capa" class="capaModal">
+        <div>
+            <h1>Confirma el envio del formulario</h1>
+            <p>¿Está seguro que desea agregar esta actividad?</p>
+            <div class="buttons">
+                <input type="button" class="w3-button w3-theme" value="Sí, estoy seguro" id="ok">&nbsp;
+                <input type="button" class="w3-button w3-theme-light"
+                    value="No, no estoy seguro. Quiero volver al formulario" id="ko">
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ########################## final de la pagina ################################ -->
+
+    <!-- Footer -->
+    <footer class="w3-container w3-theme-dark w3-padding-16">
+        <h3>HobbyApp - 2022</h3>
+        <p>Plantillas de <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
+        <div style="position:relative;bottom:55px;" class="w3-tooltip w3-right">
+            <span class="w3-text w3-theme-light w3-padding">Go To Top</span> 
+            <a class="w3-text-white" href="#myHeader"><span class="w3-xlarge">
+                    <i class="fa fa-chevron-circle-up"></i></span></a>
+        </div>
+    </footer>
+
+
+    <script>
+        // ###################### confirmacion de envio del formulario   ################################
+        document.getElementById("formulario").addEventListener("submit", submit);
+        document.getElementById("ok").addEventListener("click", enviar);
+        document.getElementById("ko").addEventListener("click", cancelar);
+
+        // Funcion que se ejecuta al pulsar el botón enviar el formulario
+        function submit(e) {
+            // Cancelams el envio a la espera de que valide el formulario
+            e.preventDefault();
+
+            // Mostramos la capa con el formulario de validacion si es que el formulario es valido
+            if (validateForm()) {
+                document.getElementById("capa").style.display = "block";
+            }
+        }
+
+        // Funcion que se ejecuta al pulsar el boton Enviar de cuadro de dialogo
+        function enviar(e) {
+            // Escondemos la capa
+            document.getElementById("capa").style.display = "none";
+
+            // Enviamos el formulario
+            document.forms["formulario"].submit();
+        }
+
+        // Funcion que se ejecuta al pulsar el boton Cancelar de cuadro de dialogo
+        function cancelar(e) {
+            // Simplemente escondemkos el formulario
+            document.getElementById("capa").style.display = "none";
+        }
+    </script>
+</body>
+
+</html>
