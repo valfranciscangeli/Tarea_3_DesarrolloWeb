@@ -271,4 +271,17 @@ class DB:
             SELECT id FROM `comuna`ORDER BY id ASC;
         '''
         self.cursor.execute(sql)
-        return self.cursor.fetchall()
+        comunas = self.cursor.fetchall()
+        arreglo = []
+        
+        for comuna in comunas:
+            arreglo.append(comuna[0])
+        return arreglo
+    
+    def get_cantidad_imagenes_por_comuna_id(self, comuna_id):
+        sql = f'''
+            SELECT COUNT(foto.id) from foto, actividad WHERE actividad.id=foto.actividad_id AND actividad.comuna_id={comuna_id};
+        '''
+        self.cursor.execute(sql)
+        return self.cursor.fetchall()[0][0]
+    
