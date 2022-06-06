@@ -23,11 +23,20 @@
     <div id="map" style="height: 300px; width: 50%; margin-left: 25%; margin-top: 50px"></div>
 
     <script>
-        var map = L.map('map').setView([-33.457626160935035, -70.6642218597435], 13);
+        let map = L.map('map').setView([-33.457626160935035, -70.6642218597435], 13);
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             maxZoom: 19,
             attribution: '© OpenStreetMap'
         }).addTo(map);
+        let marker1 = L.marker([-36.5500000, -71.5500000],
+            {
+                draggable: false,        // Make the icon dragable
+                title: '1 foto(s) disponibles',     // Add a title
+                opacity: 1.0            // Adjust the opacity
+            })
+            .addTo(map)
+            .bindPopup("<b>inserte titulo</b><br>inserte cuerpo")
+            .openPopup();
     </script>
 
 </body>

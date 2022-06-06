@@ -1,0 +1,209 @@
+
+                <!DOCTYPE html>
+                <html lang="en">
+
+                
+                <head>
+                    <meta charset="UTF-8">
+                    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+                    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+                    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-blue-grey.css">
+                    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css">
+                    <link rel="stylesheet" href="../css/style-actividades.css">
+
+                    <!--- lo que se ve en la pestaña del navegador -->
+                    <title>HobbyApp - Últimas actividades agregadas</title>
+                    <link rel="icon" href="../img/icono-nf2.ico" type="image/icon"> <!-- icono-->
+                </head>
+        
+        
+
+                <body>
+
+                
+                    <!--- links -->
+                    <div class="w3-bar w3-theme-light">
+                        <a href="./cgi-bin/portada.py" class="w3-bar-item w3-button w3-padding-16">Inicio</a>
+                        <a href="./cgi-bin/formulario.py" class="w3-bar-item w3-button w3-padding-16">Informar actividad</a>
+                        <a href="./cgi-bin/listado.py" class="w3-bar-item w3-button w3-padding-16">Ver listado de Actividades</a>
+                        <a href="../estadisticas.html" class="w3-bar-item w3-button w3-padding-16">Estadísticas</a>
+                    </div>
+
+
+                    <!-- Header -->
+                    <header class="w3-container w3-theme w3-padding" id="myHeader">
+                        <div class="w3-center">
+                            <h1 class="w3-xxxlarge w3-animate-bottom">HobbyApp</h1>
+                            <h4>Bienvenide a HobbyApp! Aquí puedes encontrar entretenidas actividades para conectarte con tu comunidad y
+                                crear nuevas amistades</h4>
+                        </div>
+                    </header>
+        
+                    <div>
+                        <hr>
+                        <h2 class="w3-center">Comida</h2>
+                    </div>
+                    <div class="w3-row-padding">
+
+                        <div class="w3-half">
+                            <div class="w3-card white">
+                                <div class="w3-container w3-blue-grey">
+                                    <h3>Información</h3>
+                                </div>
+                                <div class="w3-container">
+                                    <h3 class="w3-text-blue-grey">¿Dónde?</h3>
+                                </div>
+                                <ul class="w3-ul w3-border-top">
+                                    <li>
+                                        <h3>Región</h3>
+                                        <p>Región De La Araucanía</p>
+                                    </li>
+                                    <li>
+                                        <h3>Comuna</h3>
+                                        <p>Padre Las Casas</p>
+                                    </li>
+                                    <li>
+                                        <h3>Sector</h3>
+                                        <p>La Ruca Club</p>
+                                    </li>
+                                </ul>
+
+                                <div class="w3-container">
+                                    <h3 class="w3-text-blue-grey">¿Cuándo y de qué trata?</h3>
+                                </div>
+                                <ul class="w3-ul w3-border-top">
+                                    <li>
+                                        <h3>Día y hora de inicio</h3>
+                                        <p>2022-04-16 14:00:00</p>
+                                    </li>
+                                    <li>
+                                        <h3>Día y hora de término</h3>
+                                        <p>2022-04-16 16:00:00</p>
+                                    </li>
+                                    <li>
+                                        <h3>Descripción</h3>
+                                        <p>Taller de Mate, aprende a preparar la hierba mas consumida de latinoamerica
+</p>
+                                    </li>
+
+                                </ul>
+
+                                <div class="w3-container">
+                                    <h3 class="w3-text-blue-grey">¿Quién organiza?</h3>
+                                </div>
+                                <ul class="w3-ul w3-border-top">
+                                    <li>
+                                        <h3>Nombre</h3>
+                                        <p>Lautaro Cayupan</p>
+                                    </li>
+                                    <li>
+                                        <h3>Correo electrónico</h3>
+                                        <p>cayupan@live.cl</p>
+                                    </li>
+                                    <li>
+                                        <h3>Celular</h3>
+                                        <p>+56 9 1234 5678</p>
+                                    </li>
+                                    <li>
+                                        <h3>Contacto</h3>
+                                        <ul>
+                                        <li>Instagram: @larukarestobar</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+
+                                <div class="w3-container w3-blue-grey w3-large"></div>
+                            </div>
+                        </div>
+
+
+
+                        <div class="w3-half">
+                            <div class="w3-card white">
+                                <div class="w3-container w3-blue-grey">
+                                    <h3>Imágenes cargadas</h3>
+                                </div> <br>
+                                <div class="w3-content">
+
+                                    <!---#######################   MODALS   ###################################-->
+
+                                    
+        <!-- ############  MODAL 1 ============================ -->
+
+                <!-- Trigger the Modal -->
+                <img id="imagen1" class="imagenes" src="../media/2da52abcf6855e841a9dd7fade2304_6" alt="mate.jpg">
+
+                <!-- The Modal -->
+                <div id="myModal1" class="modal">
+
+                    <!-- The Close Button -->
+                    <span class="close1">&times;</span>
+
+                    <!-- Modal Content (The Image) -->
+                    <img class="modal-content" id="img01" src="../media/2da52abcf6855e841a9dd7fade2304_6" alt="mate.jpg">
+
+                    <!-- Modal Caption (Image Text) -->
+                    <div id="caption1"></div>
+                </div>
+
+                <script>
+                    // ############  MODAL 1=====================-
+
+                    // Get the modal
+                    let modal1 = document.getElementById("myModal1");
+
+                    // Get the image and insert it inside the modal - use its "alt" text as a caption
+                    let img1 = document.getElementById("imagen1");
+                    let modalImg1 = document.getElementById("img01");
+                    let captionText1 = document.getElementById("caption1");
+                    img1.onclick = function () {
+                        modal1.style.display = "block";
+                        modalImg1.src = this.src;
+                        captionText1.innerHTML = this.alt;
+                    }
+
+                    // Get the <span> element that closes the modal
+                    let span1 = document.getElementsByClassName("close1")[0];
+
+                    // When the user clicks on <span> (x), close the modal
+                    span1.onclick = function () {
+                        modal1.style.display = "none";
+                    }
+                </script> <br>
+        
+
+                                    <!---########################  FIN MODALS  #############################-->
+
+                                    <div class="w3-container w3-blue-grey w3-large"></div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <hr>
+
+                    <!-- =========================================================== -->
+
+                    
+                <!-- Footer -->
+                <footer class="w3-container w3-theme-dark w3-padding-16">
+                    <h3>HobbyApp - 2022</h3>
+                    <p>Plantillas de <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
+                    <div style="position:relative;bottom:55px;" class="w3-tooltip w3-right">
+                        <a href="./cgi-bin/portada.py" class='w3-bar-item w3-button w3-theme w3-hover-theme' style="text-align: center;">Home</a>
+                        <span class="w3-text w3-theme-light w3-padding">Go To Top</span>
+                        <a class="w3-text-white" href="#myHeader"><span class="w3-xlarge">
+                                <i class="fa fa-chevron-circle-up"></i></span></a>
+                    </div>
+                </footer>
+                
+                    
+                    <!-- =========================================================== -->
+
+                </body>
+
+                </html>        
+                

@@ -2,6 +2,7 @@
 
 import sys
 import detalles
+import creador_popups
 
 from db import DB
 
@@ -37,7 +38,7 @@ header_tabla = """
         <hr>
         <div class="w3-center">
             <h2>Actividades recientemente agregadas</h2>
-        </div>
+        </div> <br>
         <div class="w3-responsive w3-card-4">
             <table class="w3-table w3-striped w3-bordered">
                 <thead>
@@ -89,11 +90,12 @@ tabla += """
     <br>
     """
 
+
 with open('./templates/header+footer_portada.html', mode='r', encoding="utf-8") as template:
     file = template.read()
-    print(file.format('Home', tabla))
-    
-    
-#========================
+    print(file.format(tabla, creador_popups.marcadores))
+    # print(file.format(tabla))
+
+# ========================
 detalles.crearDetalles()
-#=======================
+# =======================

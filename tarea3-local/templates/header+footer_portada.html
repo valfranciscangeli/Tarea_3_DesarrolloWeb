@@ -32,7 +32,7 @@ Para CC5002- Otoño 2022 */
         integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ=="
         crossorigin=""></script>
 
-    <title>HobbyApp - {0}</title>
+    <title>HobbyApp - Home</title>
     <link rel="icon" href="../img/icono-nf2.ico" type="image/icon"> <!-- icono-->
 
 </head>
@@ -55,20 +55,25 @@ Para CC5002- Otoño 2022 */
             <h4>Bienvenide a HobbyApp! Aquí puedes encontrar entretenidas actividades para conectarte con tu comunidad y
                 crear nuevas amistades</h4>
         </div>
-    </header>
+    </header> <br>
 
     <!-- ====================== MAP ============================ -->
-    <div id="map" style="height: 300px; width: 50%; margin-left: 25%; margin-top: 50px"></div>
+    <div class="w3-center">
+        <h2>Actividades en todo Chile</h2>
+        <div id="map" style="height: 300px; width: 50%; margin-left: 25%; margin-top: 50px"></div>
+    </div>
+
 
     <!-- ===================== LISTADO ========================= -->
 
-    {1}
+    {0}
 
-    <!-- =================== script del mapa =================== -->
+
+<!-- =================== script del mapa =================== -->
 
     <script>
-        // seting map origin ===========================
-        var map = L.map('map').setView([-33.457626160935035, -70.6642218597435], 15);
+        // setting map origin ===========================
+        var map = L.map('map').setView([-33.45769005911668, -70.66455901796952], 10);
         L.tileLayer('https://{{s}}.tile.openstreetmap.org/{{z}}/{{x}}/{{y}}.png', {{
             maxZoom: 19,
             attribution: '© OpenStreetMap'
@@ -87,18 +92,21 @@ Para CC5002- Otoño 2022 */
             }}
 
         // markers =====================================
-        var marker = L.marker([-33.45825273374197, -70.66477415744072],
+
+        {1}
+
+        var marker = L.marker([-33.45769005911668, -70.66455901796952],
             {{
             draggable: false,        // Make the icon dragable
-            title: 'Hover Text',     // Add a title
+            title: 'FCFM',     // Add a title
             opacity: 1.0            // Adjust the opacity
             }})
             .addTo(map)
-            .bindPopup("<b>Aqui esta el subway</b><br>I am a popup.")
+            .bindPopup("<b>Facultad de Ciencias Físicas y Matemáticas</b><br>Universidad de Chile")
             .openPopup();
 
-
     </script>
+"""
 
     <!-- =================== fin =================== -->
 

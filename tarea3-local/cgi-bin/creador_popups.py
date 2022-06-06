@@ -9,16 +9,16 @@ db = DB('localhost', 'root', '', 'tarea3')
 comunas_id = db.get_comuna3()
 fotos_por_comuna = dict()
 
-for id in comunas_id:
-    cantidad_fotos = db.get_cantidad_imagenes_por_comuna_id(id)
+for id_ in comunas_id:
+    cantidad_fotos = db.get_cantidad_imagenes_por_comuna_id(id_)
     if cantidad_fotos > 0:
-        fotos_por_comuna[id] = cantidad_fotos
+        fotos_por_comuna[id_] = cantidad_fotos
 
 # ========================================================================================
 # abrimos el template de la informacion de cada marcador, el total se guardara en marcadores
 
 marcadores = ""
-formato_popup = open("../templates/popup-tmp.html", mode="r", encoding="utf-8").read()
+formato_popup = open("./templates/popup-tmp.html", mode="r", encoding="utf-8").read()
 """
         formato: 
         0: coordenada 1
@@ -30,8 +30,23 @@ formato_popup = open("../templates/popup-tmp.html", mode="r", encoding="utf-8").
 """
 
 # ========================================================================================
+"""
+fotos por comuna ej: {80103: 1}
+"""
 
-
-
-
-
+f = open("./js/chile2.json", mode='r', encoding="utf-8")
+data = json.load(f)
+"""
+data ejemplo: {'name': 'Laguna Blanca', 'lng': '-71.9166667', 'lat': '-52.2500000', 'id':12345}
+"""
+contador = 1
+for elemento in data:
+    if elemento['id'] in fotos_por_comuna:
+        # si llega acá es que la comuna tiene fotos, entonces creamos un popup
+        marcadores += formato_popup.format(elemento['lat'],
+                                           elemento['lng'],
+                                           str(fotos_por_comuna[elemento['id']]) + ' foto(s) disponibles',
+                                           elemento['name'],
+                                           'inserte cuerpo',
+                                           contador)
+        contador += 1
