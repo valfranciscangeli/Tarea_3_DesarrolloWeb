@@ -292,3 +292,16 @@ class DB:
         self.cursor.execute(sql)
         return self.cursor.fetchall()[0][0]
     
+    def get_id_actividades_comuna(self, comuna):
+        sql = f'''
+                    SELECT id from actividad WHERE comuna_id={comuna} ORDER BY dia_hora_inicio DESC;
+                '''
+        self.cursor.execute(sql)
+        return self.cursor.fetchall()
+
+    def get_info_actividad_mapa(self, actividad):
+        sql = f'''
+            SELECT TE.nombre, AC.dia_hora_inicio, AC.sector FROM actividad AC, tema TE WHERE AC.id={actividad} AND AC.tema_id=TE.id;
+             '''
+        self.cursor.execute(sql)
+        return self.cursor.fetchall()

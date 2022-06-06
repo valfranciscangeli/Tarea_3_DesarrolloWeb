@@ -39,14 +39,52 @@ data = json.load(f)
 """
 data ejemplo: {'name': 'Laguna Blanca', 'lng': '-71.9166667', 'lat': '-52.2500000', 'id':12345}
 """
+
+tabla = open("./templates/map-list-tmp.html", mode='r', encoding='utf-8').read()
+
+def crearInfoMapa(id_actividad):
+    info = db.get_info_actividad_mapa(id_actividad)[0]
+    tema= info[0].title()
+    inicio= info[1]
+    sector = info[2].title().replace('"', "'")
+    fotos = db.get_fotos(id_actividad)
+    foto = ""
+    for imagen in fotos:
+        foto+=f"<img src='../media/{imagen[1]}' style='width: 90%'><br><br>"
+
+    ver_mas = f"<a href='../actividad{id_actividad}.html'> + info</a>"
+    return tabla.format(tema, inicio, sector, foto, ver_mas)
+
+
 contador = 1
 for elemento in data:
     if elemento['id'] in fotos_por_comuna:
+        #creamos el cuerpo con la info
+        # cuerpo="""
+        #         <table>
+        #         <tr>
+        #         <th>Tema</th>
+        #         <th>Inicio</th>
+        #         <th>Sector</th>
+        #         <th>Fotos</th>
+        #         <th>Ver más</th>
+        #         </tr>
+        # """
+        cuerpo = ""
+        actividades_en_comuna = db.get_id_actividades_comuna(elemento['id'])
+        for actividad in actividades_en_comuna:
+             identificador = actividad[0]
+             cuerpo += crearInfoMapa(identificador)
+
+        # cuerpo += "</table>"
+
         # si llega acá es que la comuna tiene fotos, entonces creamos un popup
         marcadores += formato_popup.format(elemento['lat'],
                                            elemento['lng'],
                                            str(fotos_por_comuna[elemento['id']]) + ' foto(s) disponibles',
                                            elemento['name'],
-                                           'inserte cuerpo',
+                                           cuerpo,
                                            contador)
         contador += 1
+
+print(marcadores)
