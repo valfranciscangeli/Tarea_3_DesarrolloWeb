@@ -305,3 +305,10 @@ class DB:
              '''
         self.cursor.execute(sql)
         return self.cursor.fetchall()
+
+    def get_actividades_por_dia(self):
+        sql = '''
+            SELECT COUNT(actividad.id) cantidad, DATE(dia_hora_inicio) dia FROM `actividad` GROUP BY DATE(dia_hora_inicio) ORDER BY dia_hora_inicio ASC;
+        '''
+        self.cursor.execute(sql)
+        return self.cursor.fetchall()

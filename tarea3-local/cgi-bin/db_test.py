@@ -1,3 +1,4 @@
+import json
 
 from db import DB
 
@@ -15,7 +16,7 @@ print(todas_las_comunas)
 
 print("________________")
 
-santiago_id=db.get_comuna_por_nombre("santiago");
+santiago_id = db.get_comuna_por_nombre("santiago")
 
 print(santiago_id)
 
@@ -31,6 +32,8 @@ actividad_info = db.get_info_actividad_mapa(1)[0]
 print(actividad_info)
 
 tabla = open("../templates/map-list-tmp.html", mode='r', encoding='utf-8').read()
+
+
 def crearInfoMapa(id_actividad):
     info = db.get_info_actividad_mapa(id_actividad)[0]
     print(type(info[2]))
@@ -38,5 +41,12 @@ def crearInfoMapa(id_actividad):
 
 
 print(crearInfoMapa(1))
-      
-      
+
+print("________________")
+
+data = db.get_actividades_por_dia()
+print(data)
+
+data = json.dumps(data)
+
+print(data)

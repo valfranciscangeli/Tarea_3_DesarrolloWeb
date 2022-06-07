@@ -39,7 +39,6 @@ Para CC5002- Otoño 2022 */
     <a href=# class="w3-bar-item w3-button w3-padding-16">Estadísticas</a>
   </div>
 
-
   <!-- Header -->
   <header class="w3-container w3-theme w3-padding" id="myHeader">
     <div class="w3-center">
@@ -53,12 +52,21 @@ Para CC5002- Otoño 2022 */
   <h2 class="w3-center">Estadísticas de las actividades ingresadas</h2>
   <div class="w3-border">
     <div class="w3-bar w3-theme">
-      <button class="w3-bar-item w3-button testbtn w3-padding-16" onclick="openGraph(event,'lineas')">Cantidad de
+        <button class="w3-bar-item w3-button testbtn w3-padding-16" onclick="openGraph(event,'bienvenida')">Bienvenida</button>
+      <button class="w3-bar-item w3-button testbtn w3-padding-16" onclick="openGraph(event,'lineas'); loadGraph()">Cantidad de
         actividades totales por día</button>
-      <button class="w3-bar-item w3-button testbtn w3-padding-16" onclick="openGraph(event,'tortas')">Cantidad de
+      <button class="w3-bar-item w3-button testbtn w3-padding-16" onclick="openGraph(event,'tortas'); loadGraph()">Cantidad de
         actividades totales según categoría</button>
-      <button class="w3-bar-item w3-button testbtn w3-padding-16" onclick="openGraph(event,'barras')">Total de
+      <button class="w3-bar-item w3-button testbtn w3-padding-16" onclick="openGraph(event,'barras'); loadGraph()">Total de
         actividades mensuales según horario</button>
+    </div>
+
+    <div id="bienvenida" class="w3-container city w3-animate-opacity">
+      <h2>Home graficas</h2>
+        <div id="cont-bienvenida">
+        hola
+        </div>
+      <p>Click en una pestaña para ver su gráfico.</p>
     </div>
 
     <div id="lineas" class="w3-container city w3-animate-opacity">
@@ -96,14 +104,12 @@ Para CC5002- Otoño 2022 */
   </footer>
 
 
-  <script>
+     <script id="graph-script">
 
-    {0}
 
-    {1}
+     </script>
 
-    {2}
-
+   <script>
     function openGraph(evt, cityName) {{
       let i;
       let x = document.getElementsByClassName("city");
@@ -123,6 +129,26 @@ Para CC5002- Otoño 2022 */
 
 
   </script>
+
+   <!-- #################### AJAX ####################### -->
+
+    <script>
+    function loadGraph() {{
+      var xhr = new XMLHttpRequest();
+      let grafico = document.getElementById("graph-script")
+      xhr.onreadystatechange = function () {{
+                                    if (xhr.readyState === 4 && xhr.status === 200) {{
+                                        let response = xhr.responseText;
+                                        response = JSON.parse(response);
+                                        grafico.innerHTML = response;
+                                    }}
+                                }}
+
+        xhr.open("GET", "./graficos.py")
+        xhr.send();
+
+    }}
+    </script>
 
 
 </body>
