@@ -34,7 +34,4 @@ for elemento in data:
 
 data_set = [{"fechas": datosX, "cantidades": datosY}]
 
-#print(datosX)
-#print(datosY)
-
 print(json.dumps(data_set))

@@ -104,34 +104,59 @@ Para CC5002- Otoño 2022 */
     </div>
   </footer>
 
-
   <script>
 
     // grafico de linea #####################################################
 
     var xValues; //dias
-    var yValues; //cantidad de actividades
-
-    let xhr = new XMLHttpRequest();
-
+    let yValues; //cantidad de actividades
+    
     // AJAX ================================================
-      xhr.onreadystatechange = function () {
-                                    if (xhr.readyState === 4 && xhr.status === 200) {
-                                        let response = xhr.responseText;
-                                        response = JSON.parse(response);
-                                        console.log(response);
-                                        yValues = response[0]['fechas'];
-                                        console.log(yValues);
-                                        xValues= response[0]['cantidades'];
-                                        console.log(xValues);
-                                    }
-                                }
+    let xhr2 = new XMLHttpRequest();
+    xhr2.onreadystatechange = function () {
+                                  if (xhr2.readyState === 4 && xhr2.status === 200) {
+                                      let response = xhr2.responseText;
+                                      response = JSON.parse(response);
+                                      console.log(response);
+                                      yValues= response[0]['cantidades'];
+                                      xValues = response[0]['fechas'];
+                                      console.log(yValues);
+                                      console.log(xValues);
+                                  }
+                              }
 
-        xhr.open("GET", "./cgi-bin/grafico_linea.py");
-        xhr.send();
+      xhr2.open("GET", "./cgi-bin/grafico_linea.py", false);
+      xhr2.send();
+
+      console.log(yValues);
+      console.log(xValues);
 
 
     // FIN AJAX =============================================
+
+    function sacarMinimo(lista){
+      let min = 0
+      for (let i = 0; i < lista.length; i++) {
+        if (lista[i]<min){
+          min = lista[i]
+        }
+      }
+      return min
+    }
+
+        function sacarMaximo(lista){
+      let max = 0
+      for (let i = 0; i < lista.length; i++) {
+        if (lista[i]>max){
+          max = lista[i]
+        }
+      }
+      return max
+    }
+
+    let vMinimo= Math.max(sacarMinimo(yValues)-1, 0);
+    let vMaximo = sacarMaximo(yValues)+1;
+
     new Chart("linea", {
       type: "line",
       data: {
@@ -147,7 +172,7 @@ Para CC5002- Otoño 2022 */
       options: {
         legend: { display: false },
         scales: {
-          yAxes: [{ ticks: { min: 1, max: 14 } }],
+          yAxes: [{ ticks: { min: vMinimo, max: vMaximo, stepSize: 1 } }],
         },
         title: {
           display: false,
@@ -158,8 +183,35 @@ Para CC5002- Otoño 2022 */
 
     // grafico de torta #####################################################
 
-    temas = ["Música", "Deporte", "Ciencias", "Religión", "Política", "Tecnología", "Juegos", "Baile", "Comida", "Otro"];
-    cantidad = [80, 137, 108, 18, 34, 115, 142, 152, 158, 171];
+    let temas;
+    let cantidad;
+    
+    // AJAX ================================================
+    let xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function () {
+                                  if (xhr.readyState === 4 && xhr.status === 200) {
+                                      let response = xhr.responseText;
+                                      response = JSON.parse(response);
+                                      console.log(response);
+                                      temas= response[0]['temas'];
+                                      cantidad = response[0]['cantidad'];
+                                      console.log(temas);
+                                      console.log(cantidad);
+                                  }
+                              }
+
+      xhr.open("GET", "./cgi-bin/grafico_torta.py", false);
+      xhr.send();
+
+      console.log(temas);
+      console.log(cantidad);
+
+
+    // FIN AJAX =============================================
+
+    //temas = ["Música", "Deporte", "Ciencias", "Religión", "Política", "Tecnología", "Juegos", "Baile", "Comida", "Otro"];
+    //cantidad = [80, 137, 108, 18, 34, 115, 142, 152, 158, 171];
+
     let barColors = [
       "#022F40",
       "#546363",
@@ -194,25 +246,49 @@ Para CC5002- Otoño 2022 */
 
     // grafico de barras #####################################################
 
+    let manhana;
+    let mediodia;
+    let tarde;
+    
+    // AJAX ================================================
+    let xhr3 = new XMLHttpRequest();
+    xhr3.onreadystatechange = function () {
+                                  if (xhr3.readyState === 4 && xhr3.status === 200) {
+                                      let response = xhr3.responseText;
+                                      response = JSON.parse(response);
+                                      console.log(response);
+                                      temas= response[0]['temas'];
+                                      cantidad = response[0]['cantidad'];
+                                      console.log(temas);
+                                      console.log(cantidad);
+                                  }
+                              }
+
+      xhr3.open("GET", "./cgi-bin/grafico_barra.py", false);
+      xhr3.send();
+
+      console.log(temas);
+      console.log(cantidad);
+
     new Chart("barra", {
       type: "bar",
       data: {
-        labels: ["Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"],
+        labels: ["Enero", "Febrero", "Marzo","Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"],
         datasets: [
           {
             label: "Mañana",
             backgroundColor: "rgba(116, 211, 174,1)",
-            data: [41, 59, 53, 40, 44, 42, 49, 43, 7]
+            data: manhana
           },
           {
             label: "Mediodía",
             backgroundColor: "rgba(122, 156, 198,1)",
-            data: [39, 33, 53, 50, 51, 56, 39, 33, 9]
+            data: mediodia
           },
           {
             label: "Tarde",
             backgroundColor: "rgba(244, 156, 187,1.0)",
-            data: [28, 55, 46, 50, 53, 42, 44, 48, 8]
+            data: tarde
           }
         ]
       },
@@ -224,6 +300,8 @@ Para CC5002- Otoño 2022 */
         }
       }
     });
+
+    //  funcion que despliega los graficos =========================================================
 
     function openGraph(evt, cityName) {
       let i;

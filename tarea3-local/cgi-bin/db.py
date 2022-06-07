@@ -312,3 +312,17 @@ class DB:
         '''
         self.cursor.execute(sql)
         return self.cursor.fetchall()
+
+    def get_actividades_por_tema(self):
+        sql = '''
+            SELECT COUNT(actividad.id) cantidad, tema_id tm FROM `actividad` GROUP BY tema_id ORDER BY tema_id ASC;
+        '''
+        self.cursor.execute(sql)
+        return self.cursor.fetchall()
+
+    def get_actividades_por_hora(self):
+        sql = '''
+SELECT COUNT(actividad.id) cantidad, MONTH(dia_hora_inicio) mes, HOUR(dia_hora_inicio) hora FROM `actividad` GROUP BY MONTH(dia_hora_inicio), HOUR(dia_hora_inicio) ORDER BY mes, hora ASC;                '''
+        self.cursor.execute(sql)
+        return self.cursor.fetchall()
+

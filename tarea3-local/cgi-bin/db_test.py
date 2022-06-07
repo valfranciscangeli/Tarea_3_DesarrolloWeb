@@ -47,6 +47,16 @@ print("________________")
 data = db.get_actividades_por_dia()
 print(data)
 
-data = json.dumps(data)
+print("________________")
+data2 = db.get_actividades_por_tema()
+print(data2)
 
-print(data)
+print("________________")
+
+temas= db.get_temas()
+print(temas)
+
+print("________________")
+
+data3= db.get_actividades_por_hora()
+print(data3)
