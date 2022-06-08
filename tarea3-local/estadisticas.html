@@ -53,7 +53,8 @@ Para CC5002- Otoño 2022 */
   <h2 class="w3-center">Estadísticas de las actividades ingresadas</h2>
   <div class="w3-border">
     <div class="w3-bar w3-theme">
-        <button class="w3-bar-item w3-button testbtn w3-padding-16" onclick="openGraph(event,'bienvenida')">Bienvenida</button>
+      <button class="w3-bar-item w3-button testbtn w3-padding-16"
+        onclick="openGraph(event,'bienvenida')">Bienvenida</button>
       <button class="w3-bar-item w3-button testbtn w3-padding-16" onclick="openGraph(event,'lineas')">Cantidad de
         actividades totales por día</button>
       <button class="w3-bar-item w3-button testbtn w3-padding-16" onclick="openGraph(event,'tortas')">Cantidad de
@@ -63,11 +64,14 @@ Para CC5002- Otoño 2022 */
     </div>
 
     <div id="bienvenida" class="w3-container city w3-animate-opacity">
-      <h2>Home graficas</h2>
-        <div id="cont-bienvenida">
-        hola
-        </div>
-      <p>Click en una pestaña para ver su gráfico.</p>
+      <h2> Bienvenide a la seción de estadísticas de HobbyApp</h2>
+      <div id="cont-bienvenida" style="align-self: center">
+          <h4> Aquí podrás encontrar algunas gráficas interactivas que resumen las actividades registradas según diferentes criterios.</h4><br>
+          <img src="https://c.tenor.com/HKUc3og5OxAAAAAC/gato-cat.gif" style="width: 30%; margin-left: 35%"><br>
+
+        <small style="margin-left: 50% ">Créditos de imágen: tenor.com</small><br><br>
+      </div>
+      <p>Haz click en una pestaña para ver su gráfico.</p>
     </div>
 
     <div id="lineas" class="w3-container city w3-animate-opacity">
@@ -108,54 +112,54 @@ Para CC5002- Otoño 2022 */
 
     // grafico de linea #####################################################
 
-    var xValues; //dias
+    let xValues; //dias
     let yValues; //cantidad de actividades
-    
+
     // AJAX ================================================
     let xhr2 = new XMLHttpRequest();
     xhr2.onreadystatechange = function () {
-                                  if (xhr2.readyState === 4 && xhr2.status === 200) {
-                                      let response = xhr2.responseText;
-                                      response = JSON.parse(response);
-                                      console.log(response);
-                                      yValues= response[0]['cantidades'];
-                                      xValues = response[0]['fechas'];
-                                      console.log(yValues);
-                                      console.log(xValues);
-                                  }
-                              }
+      if (xhr2.readyState === 4 && xhr2.status === 200) {
+        let response = xhr2.responseText;
+        response = JSON.parse(response);
+        console.log(response);
+        yValues = response[0]['cantidades'];
+        xValues = response[0]['fechas'];
+        console.log(yValues);
+        console.log(xValues);
+      }
+    }
 
-      xhr2.open("GET", "./cgi-bin/grafico_linea.py", false);
-      xhr2.send();
+    xhr2.open("GET", "./cgi-bin/grafico_linea.py", false);
+    xhr2.send();
 
-      console.log(yValues);
-      console.log(xValues);
+    console.log(yValues);
+    console.log(xValues);
 
 
     // FIN AJAX =============================================
 
-    function sacarMinimo(lista){
+    function sacarMinimo(lista) {
       let min = 0
       for (let i = 0; i < lista.length; i++) {
-        if (lista[i]<min){
+        if (lista[i] < min) {
           min = lista[i]
         }
       }
       return min
     }
 
-        function sacarMaximo(lista){
+    function sacarMaximo(lista) {
       let max = 0
       for (let i = 0; i < lista.length; i++) {
-        if (lista[i]>max){
+        if (lista[i] > max) {
           max = lista[i]
         }
       }
       return max
     }
 
-    let vMinimo= Math.max(sacarMinimo(yValues)-1, 0);
-    let vMaximo = sacarMaximo(yValues)+1;
+    let vMinimo = Math.max(sacarMinimo(yValues) - 1, 0);
+    let vMaximo = sacarMaximo(yValues) + 1;
 
     new Chart("linea", {
       type: "line",
@@ -185,26 +189,26 @@ Para CC5002- Otoño 2022 */
 
     let temas;
     let cantidad;
-    
+
     // AJAX ================================================
     let xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function () {
-                                  if (xhr.readyState === 4 && xhr.status === 200) {
-                                      let response = xhr.responseText;
-                                      response = JSON.parse(response);
-                                      console.log(response);
-                                      temas= response[0]['temas'];
-                                      cantidad = response[0]['cantidad'];
-                                      console.log(temas);
-                                      console.log(cantidad);
-                                  }
-                              }
+      if (xhr.readyState === 4 && xhr.status === 200) {
+        let response = xhr.responseText;
+        response = JSON.parse(response);
+        console.log(response);
+        temas = response[0]['temas'];
+        cantidad = response[0]['cantidad'];
+        console.log(temas);
+        console.log(cantidad);
+      }
+    }
 
-      xhr.open("GET", "./cgi-bin/grafico_torta.py", false);
-      xhr.send();
+    xhr.open("GET", "./cgi-bin/grafico_torta.py", false);
+    xhr.send();
 
-      console.log(temas);
-      console.log(cantidad);
+    console.log(temas);
+    console.log(cantidad);
 
 
     // FIN AJAX =============================================
@@ -240,6 +244,7 @@ Para CC5002- Otoño 2022 */
           display: false,
           text: "Cantidad de actividades totales según categoría"
         }
+
       }
     });
 
@@ -249,31 +254,34 @@ Para CC5002- Otoño 2022 */
     let manhana;
     let mediodia;
     let tarde;
-    
+
     // AJAX ================================================
     let xhr3 = new XMLHttpRequest();
     xhr3.onreadystatechange = function () {
-                                  if (xhr3.readyState === 4 && xhr3.status === 200) {
-                                      let response = xhr3.responseText;
-                                      response = JSON.parse(response);
-                                      console.log(response);
-                                      temas= response[0]['temas'];
-                                      cantidad = response[0]['cantidad'];
-                                      console.log(temas);
-                                      console.log(cantidad);
-                                  }
-                              }
+      if (xhr3.readyState === 4 && xhr3.status === 200) {
+        let response = xhr3.responseText;
+        response = JSON.parse(response);
+        console.log(response);
+        manhana = response[0]['manhana'];
+        mediodia = response[0]['mediodia'];
+        tarde = response[0]['tarde'];
+        console.log(manhana);
+        console.log(mediodia);
+        console.log((tarde))
+      }
+    }
 
-      xhr3.open("GET", "./cgi-bin/grafico_barra.py", false);
-      xhr3.send();
+    xhr3.open("GET", "./cgi-bin/grafico_barra.py", false);
+    xhr3.send();
 
-      console.log(temas);
-      console.log(cantidad);
+    console.log(manhana);
+    console.log(tarde);
+    console.log((mediodia))
 
     new Chart("barra", {
       type: "bar",
       data: {
-        labels: ["Enero", "Febrero", "Marzo","Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"],
+        labels: ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"],
         datasets: [
           {
             label: "Mañana",
@@ -297,6 +305,17 @@ Para CC5002- Otoño 2022 */
         title: {
           display: false,
           text: "Total de actividades mensuales según horario"
+        },
+        scales: {
+          yAxes: [
+            {
+              ticks: {
+                min: 0, // it is for ignoring negative step.
+                beginAtZero: true,
+                stepSize: 1
+              }
+            }
+          ]
         }
       }
     });

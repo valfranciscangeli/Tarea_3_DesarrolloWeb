@@ -1,3 +1,15 @@
+#!/usr/bin/python3
+# -*- coding: utf-8 -*-
+
+import sys
+import os
+
+import cgi
+
+import sys
+import cgi
+
+
 from db import DB
 import json
 
@@ -52,7 +64,7 @@ def crearInfoMapa(id_actividad):
     for imagen in fotos:
         foto+=f"<img src='../media/{imagen[1]}' style='width: 90%'><br><br>"
 
-    ver_mas = f"<a href='../actividad{id_actividad}.html'> + info</a>"
+    ver_mas = f"<a href='../actividad{id_actividad}.html' target='_blank'> + info</a>"
     return tabla.format(tema, inicio, sector, foto, ver_mas)
 
 

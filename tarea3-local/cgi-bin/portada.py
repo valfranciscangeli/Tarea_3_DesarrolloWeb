@@ -1,4 +1,10 @@
+#!/usr/bin/python3
 # -*- coding: utf-8 -*-
+
+import sys
+import os
+
+import cgi
 
 import sys
 import detalles
@@ -94,7 +100,6 @@ tabla += """
 with open('./templates/header+footer_portada.html', mode='r', encoding="utf-8") as template:
     file = template.read()
     print(file.format(tabla, creador_popups.marcadores))
-    # print(file.format(tabla))
 
 # ========================
 detalles.crearDetalles()

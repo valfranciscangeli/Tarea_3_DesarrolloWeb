@@ -3,9 +3,16 @@
 
 import sys
 import os
+
+import cgi
+
+import sys
+import os
+
+import cgi
+
 from db import DB
 import math
-import cgi
 
 from detalles import *
 

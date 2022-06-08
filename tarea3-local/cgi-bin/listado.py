@@ -3,6 +3,11 @@
 
 import sys
 import os
+
+import cgi
+
+import sys
+import os
 from db import DB
 import math
 import cgi
