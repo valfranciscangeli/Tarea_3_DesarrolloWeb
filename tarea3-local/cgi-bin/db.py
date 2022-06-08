@@ -6,13 +6,10 @@ import os
 
 import cgi
 
-import sys
-import cgi
-
 import hashlib
-import sys
 
 import mysql.connector
+
 
 class DB:
     def __init__(self, host, user, password, database):
@@ -44,7 +41,7 @@ class DB:
                 INSERT INTO contactar_por (nombre, identificador, actividad_id) VALUES (%s, %s, %s);
              '''
         self.cursor.execute(sql, contacto_info)
-        #self.db.commit()
+        # self.db.commit()
 
     def guardar_actividad(self, actividad):
         # recibe un diccionario
@@ -76,7 +73,7 @@ class DB:
                    actividad['descripcion'],
                    actividad['tema'])
         self.cursor.execute(sql, valores)  # ejecuta la consulta
-        #self.db.commit()
+        # self.db.commit()
         id_actividad = self.cursor.getlastrowid()
         return id_actividad
 
@@ -206,7 +203,7 @@ class DB:
         '''
         self.cursor.execute(sql)
         return self.cursor.fetchall()
-    
+
     def get_todas_actividades(self):
         sql = f'''
             SELECT AC.id, CO.nombre, AC.sector, AC.nombre, AC.email, AC.celular, AC.dia_hora_inicio, AC.dia_hora_termino, AC.descripcion, TE.nombre FROM actividad AC, comuna CO, tema TE WHERE AC.comuna_id=CO.id AND AC.tema_id=TE.id ORDER BY id DESC;
@@ -284,11 +281,11 @@ class DB:
         self.cursor.execute(sql)
         comunas = self.cursor.fetchall()
         arreglo = []
-        
+
         for comuna in comunas:
             arreglo.append(comuna[0])
         return arreglo
-    
+
     def get_cantidad_imagenes_por_comuna_id(self, comuna_id):
         sql = f'''
             SELECT COUNT(foto.id) from foto, actividad WHERE actividad.id=foto.actividad_id AND actividad.comuna_id={comuna_id};
@@ -302,7 +299,7 @@ class DB:
                 '''
         self.cursor.execute(sql)
         return self.cursor.fetchall()[0][0]
-    
+
     def get_id_actividades_comuna(self, comuna):
         sql = f'''
                     SELECT id from actividad WHERE comuna_id={comuna} ORDER BY dia_hora_inicio DESC;
@@ -336,4 +333,3 @@ class DB:
 SELECT COUNT(actividad.id) cantidad, MONTH(dia_hora_inicio) mes, HOUR(dia_hora_inicio) hora FROM `actividad` GROUP BY MONTH(dia_hora_inicio), HOUR(dia_hora_inicio) ORDER BY mes, hora ASC;                '''
         self.cursor.execute(sql)
         return self.cursor.fetchall()
-

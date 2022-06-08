@@ -6,9 +6,6 @@ import os
 
 import cgi
 
-import sys
-import cgi
-
 import json
 
 from db import DB

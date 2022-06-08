@@ -5,9 +5,6 @@ import sys
 import os
 
 import cgi
-
-import sys
-import cgi
 import json
 import datetime
 

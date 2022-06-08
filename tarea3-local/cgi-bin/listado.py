@@ -6,11 +6,8 @@ import os
 
 import cgi
 
-import sys
-import os
 from db import DB
 import math
-import cgi
 
 print("Content-type: text/html; charset=UTF-8")
 print()

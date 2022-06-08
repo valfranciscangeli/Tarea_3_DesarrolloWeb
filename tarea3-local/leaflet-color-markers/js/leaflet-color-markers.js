@@ -1,4 +1,4 @@
-var blueIcon = new L.Icon({
+const blueIcon = new L.Icon({
 	iconUrl: 'img/marker-icon-2x-blue.png',
 	shadowUrl: 'img/marker-shadow.png',
 	iconSize: [25, 41],
@@ -7,7 +7,7 @@ var blueIcon = new L.Icon({
 	shadowSize: [41, 41]
 });
 
-var goldIcon = new L.Icon({
+const goldIcon = new L.Icon({
 	iconUrl: 'img/marker-icon-2x-gold.png',
 	shadowUrl: 'img/marker-shadow.png',
 	iconSize: [25, 41],
@@ -16,7 +16,7 @@ var goldIcon = new L.Icon({
 	shadowSize: [41, 41]
 });
 
-var redIcon = new L.Icon({
+const redIcon = new L.Icon({
 	iconUrl: 'img/marker-icon-2x-red.png',
 	shadowUrl: 'img/marker-shadow.png',
 	iconSize: [25, 41],
@@ -25,7 +25,7 @@ var redIcon = new L.Icon({
 	shadowSize: [41, 41]
 });
 
-var greenIcon = new L.Icon({
+const greenIcon = new L.Icon({
 	iconUrl: 'img/marker-icon-2x-green.png',
 	shadowUrl: 'img/marker-shadow.png',
 	iconSize: [25, 41],
@@ -34,7 +34,7 @@ var greenIcon = new L.Icon({
 	shadowSize: [41, 41]
 });
 
-var orangeIcon = new L.Icon({
+const orangeIcon = new L.Icon({
 	iconUrl: 'img/marker-icon-2x-orange.png',
 	shadowUrl: 'img/marker-shadow.png',
 	iconSize: [25, 41],
@@ -43,7 +43,7 @@ var orangeIcon = new L.Icon({
 	shadowSize: [41, 41]
 });
 
-var yellowIcon = new L.Icon({
+const yellowIcon = new L.Icon({
 	iconUrl: 'img/marker-icon-2x-yellow.png',
 	shadowUrl: 'img/marker-shadow.png',
 	iconSize: [25, 41],
@@ -52,7 +52,7 @@ var yellowIcon = new L.Icon({
 	shadowSize: [41, 41]
 });
 
-var violetIcon = new L.Icon({
+const violetIcon = new L.Icon({
 	iconUrl: 'img/marker-icon-2x-violet.png',
 	shadowUrl: 'img/marker-shadow.png',
 	iconSize: [25, 41],
@@ -61,7 +61,7 @@ var violetIcon = new L.Icon({
 	shadowSize: [41, 41]
 });
 
-var greyIcon = new L.Icon({
+const greyIcon = new L.Icon({
 	iconUrl: 'img/marker-icon-2x-grey.png',
 	shadowUrl: 'img/marker-shadow.png',
 	iconSize: [25, 41],
@@ -70,7 +70,7 @@ var greyIcon = new L.Icon({
 	shadowSize: [41, 41]
 });
 
-var blackIcon = new L.Icon({
+const blackIcon = new L.Icon({
 	iconUrl: 'img/marker-icon-2x-black.png',
 	shadowUrl: 'img/marker-shadow.png',
 	iconSize: [25, 41],

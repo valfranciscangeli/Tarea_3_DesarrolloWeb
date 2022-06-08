@@ -5,9 +5,6 @@ import sys
 import os
 
 import cgi
-
-import sys
-import cgi
 import json
 
 from db import DB
@@ -56,4 +53,3 @@ for elemento in data:
 data_set = [{"temas": temas2, "cantidad": cantidad}]
 
 print(json.dumps(data_set))
-

@@ -6,9 +6,6 @@ import os
 
 import cgi
 
-import sys
-import cgi
-
 import json
 
 from db import DB
@@ -64,10 +61,10 @@ print(data2)
 
 print("________________")
 
-temas= db.get_temas()
+temas = db.get_temas()
 print(temas)
 
 print("________________")
 
-data3= db.get_actividades_por_hora()
+data3 = db.get_actividades_por_hora()
 print(data3)

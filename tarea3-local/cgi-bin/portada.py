@@ -6,7 +6,6 @@ import os
 
 import cgi
 
-import sys
 import detalles
 import creador_popups
 

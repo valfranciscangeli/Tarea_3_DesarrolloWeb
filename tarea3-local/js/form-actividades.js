@@ -610,7 +610,7 @@ function validar_email(email) {
     if (email === "") {
         return [false, "- El ingreso de un CORREO ELECTRÓNICO es OBLIGATORIO.\n"];
     }
-    let regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+    let regex = /^[a-zA-Z\d._-]+@[a-zA-Z\d.-]+\.[a-zA-Z]{2,4}$/;
     if (!regex.test(email)) {
         return [false, "- Ingrese un CORREO ELECTRÓNICO de formato válido. (hola@contacto.com)\n"];
     }
@@ -684,7 +684,7 @@ function validar_hora_inicio(inicio) {
     }
 
     //let regex = /^(0[1-9]|1\d|2\d|3[01])-(0[1-9]|1\d|2\d|3[01])-(19|20)\d{2}\s+(0[0-9]|1[0-9]|2[0-3]):(0[0-9]|[1-5][0-9])$/;
-    let regex = /[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1]) (2[0-3]|[01][0-9]):[0-5][0-9]/;
+    let regex = /\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2]\d|3[0-1]) (2[0-3]|[01]\d):[0-5]\d/;
 
     if (!regex.test(inicio)) {
         return [false, "- Ingrese una HORA DE INICIO de formato válido. (aaaa-mm-dd hh:mm).\n"];
@@ -699,7 +699,7 @@ function validar_hora_termino(termino, inicio) {
         return [true, ""];
     }
     //let regex = /^(0[1-9]|1\d|2\d|3[01])-(0[1-9]|1\d|2\d|3[01])-(19|20)\d{2}\s+(0[0-9]|1[0-9]|2[0-3]):(0[0-9]|[1-5][0-9])$/;
-    let regex = /[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1]) (2[0-3]|[01][0-9]):[0-5][0-9]/;
+    let regex = /\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2]\d|3[0-1]) (2[0-3]|[01]\d):[0-5]\d/;
 
     if (!regex.test(termino)) {
         return [false, "- Ingrese una HORA DE INICIO de formato válido. (aaaa-mm-dd hh:mm).\n"];
@@ -737,7 +737,7 @@ function validar_tema(tema) {
     if (tema === ''){
         return [false, "- El ingreso de TEMA es OBLIGATORIO.\n"];
     }
-    let regextemas = /^[0-9]*$/gm;
+    let regextemas = /^\d*$/gm;
     if (regextemas.test(tema)) {
         return [true, ""];
     }

@@ -6,8 +6,6 @@ import os
 
 import cgi
 
-import sys
-
 from db import DB
 
 print("Content-type: text/html; charset=UTF-8")

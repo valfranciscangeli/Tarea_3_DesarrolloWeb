@@ -6,10 +6,6 @@ import os
 
 import cgi
 
-import sys
-import cgi
-
-
 from db import DB
 import json
 
@@ -54,15 +50,16 @@ data ejemplo: {'name': 'Laguna Blanca', 'lng': '-71.9166667', 'lat': '-52.250000
 
 tabla = open("./templates/map-list-tmp.html", mode='r', encoding='utf-8').read()
 
+
 def crearInfoMapa(id_actividad):
     info = db.get_info_actividad_mapa(id_actividad)[0]
-    tema= info[0].title()
-    inicio= info[1]
+    tema = info[0].title()
+    inicio = info[1]
     sector = info[2].title().replace('"', "'")
     fotos = db.get_fotos(id_actividad)
     foto = ""
     for imagen in fotos:
-        foto+=f"<img src='../media/{imagen[1]}' style='width: 90%'><br><br>"
+        foto += f"<img src='../media/{imagen[1]}' style='width: 90%'><br><br>"
 
     ver_mas = f"<a href='../actividad{id_actividad}.html' target='_blank'> + info</a>"
     return tabla.format(tema, inicio, sector, foto, ver_mas)
@@ -71,7 +68,7 @@ def crearInfoMapa(id_actividad):
 contador = 1
 for elemento in data:
     if elemento['id'] in fotos_por_comuna:
-        #creamos el cuerpo con la info
+        # creamos el cuerpo con la info
         # cuerpo="""
         #         <table>
         #         <tr>
@@ -85,8 +82,8 @@ for elemento in data:
         cuerpo = ""
         actividades_en_comuna = db.get_id_actividades_comuna(elemento['id'])
         for actividad in actividades_en_comuna:
-             identificador = actividad[0]
-             cuerpo += crearInfoMapa(identificador)
+            identificador = actividad[0]
+            cuerpo += crearInfoMapa(identificador)
 
         # cuerpo += "</table>"
 

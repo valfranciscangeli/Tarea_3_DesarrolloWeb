@@ -6,18 +6,13 @@ import os
 
 import cgi
 
-import sys
-import os
-
-import cgi
-
 from db import DB
 import math
 
 from detalles import *
 
-
 db = DB('localhost', 'root', '', 'tarea3')
+
 
 def createActividadInfo(datos, region, fotos, contactos):
     # datos:
@@ -274,8 +269,10 @@ def createActividadInfo(datos, region, fotos, contactos):
                 """
 
     informacion.write(html)
-    
+
     # ====================================
+
+
 def crearDetalles():
     data = db.get_todas_actividades()  # retorna las tuplas en un rango
     for i in range(len(data)):
@@ -286,5 +283,5 @@ def crearDetalles():
         region = db.get_region(datos[1])
         fotos = db.get_fotos(datos[0])
         contactos = db.get_contacto(datos[0])
-        
+
         createActividadInfo(datos, region, fotos, contactos)
