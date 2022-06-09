@@ -61,7 +61,7 @@ header_tabla = """
 
 tabla += header_tabla
 
-fila_tabla = open("./templates/fila-tabla-portada.html", mode="r", encoding="utf-8").read()
+fila_tabla = open("../templates/fila-tabla-portada.html", mode="r", encoding="utf-8").read()
 
 for p in data:
     """
@@ -96,7 +96,7 @@ tabla += """
     """
 
 
-with open('./templates/header+footer_portada.html', mode='r', encoding="utf-8") as template:
+with open('../templates/header+footer_portada.html', mode='r', encoding="utf-8") as template:
     file = template.read()
     print(file.format(tabla, creador_popups.marcadores))
 

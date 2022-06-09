@@ -32,7 +32,7 @@ for tema in temas:
 temas_opt += "                    <option value='otro'>Otro</option>"
 
 # ======================== CREAMOS PARTES DEL FORMULARIO =================================
-head_footer = open('./templates/header+footer_formulario.html', mode='r', encoding='utf-8').read()
+head_footer = open('../templates/header+footer_formulario.html', mode='r', encoding='utf-8').read()
 
 titulo = "HobbyApp - Agregar actividad"
 

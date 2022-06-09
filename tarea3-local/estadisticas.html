@@ -18,7 +18,10 @@ Para CC5002- Otoño 2022 */
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+  <script src="./js/grafico.js"></script>
 
   <link rel="stylesheet" href="css/style-estadisticas.css">
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -108,107 +111,91 @@ Para CC5002- Otoño 2022 */
     </div>
   </footer>
 
+  <!--GRAFICOS=========================================================================== -->
+
   <script>
 
     // grafico de linea #####################################################
 
-    let xValues; //dias
-    let yValues; //cantidad de actividades
+  //let xValues; //dias
+  //let yValues; //cantidad de actividades
 
-    // AJAX ================================================
-    let xhr2 = new XMLHttpRequest();
-    xhr2.onreadystatechange = function () {
-      if (xhr2.readyState === 4 && xhr2.status === 200) {
-        let response = xhr2.responseText;
-        response = JSON.parse(response);
-        console.log(response);
-        yValues = response[0]['cantidades'];
-        xValues = response[0]['fechas'];
-        console.log(yValues);
-        console.log(xValues);
-      }
-    }
+  //// AJAX ================================================
+  //let xhr2 = new XMLHttpRequest();
+  //xhr2.onreadystatechange = function () {
+  //  if (xhr2.readyState === 4 && xhr2.status === 200) {
+  //    let response = xhr2.responseText;
+  //    response = JSON.parse(response);
+  //    console.log("estadisticas.html:" +response);
+  //    yValues = response[0]['cantidades'];
+  //    xValues = response[0]['fechas'];
+  //    console.log("estadisticas.html:" +yValues);
+  //    console.log("estadisticas.html:" +xValues);
+  //  }
+  //}
 
-    xhr2.open("GET", "./cgi-bin/grafico_linea.py", false);
-    xhr2.send();
+  //  xhr2.open("GET", "./cgi-bin/grafico_linea.py", false);
+  //  xhr2.send();
 
-    console.log(yValues);
-    console.log(xValues);
+    console.log("estadisticas.html:" +yValues);
+    console.log("estadisticas.html:" +xValues);
 
 
     // FIN AJAX =============================================
 
-    function sacarMinimo(lista) {
-      let min = 0
-      for (let i = 0; i < lista.length; i++) {
-        if (lista[i] < min) {
-          min = lista[i]
-        }
-      }
-      return min
-    }
 
-    function sacarMaximo(lista) {
-      let max = 0
-      for (let i = 0; i < lista.length; i++) {
-        if (lista[i] > max) {
-          max = lista[i]
-        }
-      }
-      return max
-    }
 
-    let vMinimo = Math.max(sacarMinimo(yValues) - 1, 0);
-    let vMaximo = sacarMaximo(yValues) + 1;
-
-    new Chart("linea", {
-      type: "line",
-      data: {
-        labels: xValues,
-        datasets: [{
-          fill: false,
-          lineTension: 0,
-          backgroundColor: "#9368B7",
-          borderColor: "#D8A7CA",
-          data: yValues
-        }]
-      },
-      options: {
-        legend: { display: false },
-        scales: {
-          yAxes: [{ ticks: { min: vMinimo, max: vMaximo, stepSize: 1 } }],
-        },
-        title: {
-          display: false,
-          text: "Cantidad de actividades totales por día"
-        }
-      }
-    });
+ //   let vMinimo = Math.max(sacarMinimo(yValues) - 1, 0);
+ //   let vMaximo = sacarMaximo(yValues) + 1;
+//
+ //  new Chart("linea", {
+ //    type: "line",
+ //    data: {
+ //      labels: xValues,
+ //      datasets: [{
+ //        fill: false,
+ //        lineTension: 0,
+ //        backgroundColor: "#9368B7",
+ //        borderColor: "#D8A7CA",
+ //        data: yValues
+ //      }]
+ //    },
+ //    options: {
+ //      legend: { display: false },
+ //      scales: {
+ //        yAxes: [{ ticks: { min: vMinimo, max: vMaximo, stepSize: 1 } }],
+ //      },
+ //      title: {
+ //        display: false,
+ //        text: "Cantidad de actividades totales por día"
+ //      }
+ //    }
+ //  });
 
     // grafico de torta #####################################################
 
-    let temas;
-    let cantidad;
+ //  let temas;
+ //  let cantidad;
 
-    // AJAX ================================================
-    let xhr = new XMLHttpRequest();
-    xhr.onreadystatechange = function () {
-      if (xhr.readyState === 4 && xhr.status === 200) {
-        let response = xhr.responseText;
-        response = JSON.parse(response);
-        console.log(response);
-        temas = response[0]['temas'];
-        cantidad = response[0]['cantidad'];
-        console.log(temas);
-        console.log(cantidad);
-      }
-    }
+ //  // AJAX ================================================
+ //  let xhr = new XMLHttpRequest();
+ //  xhr.onreadystatechange = function () {
+ //    if (xhr.readyState === 4 && xhr.status === 200) {
+ //      let response = xhr.responseText;
+ //      response = JSON.parse(response);
+ //      console.log("estadisticas.html:" +response);
+ //      temas = response[0]['temas'];
+ //      cantidad = response[0]['cantidad'];
+ //      console.log("estadisticas.html:" +temas);
+ //      console.log("estadisticas.html:" +cantidad);
+ //    }
+ //  }
 
-    xhr.open("GET", "./cgi-bin/grafico_torta.py", false);
-    xhr.send();
+ //  xhr.open("GET", "./cgi-bin/grafico_torta.py", false);
+ //  xhr.send();
 
-    console.log(temas);
-    console.log(cantidad);
+   console.log("estadisticas.html:" +temas);
+   console.log("estadisticas.html:" +cantidad);
 
 
     // FIN AJAX =============================================
@@ -216,67 +203,67 @@ Para CC5002- Otoño 2022 */
     //temas = ["Música", "Deporte", "Ciencias", "Religión", "Política", "Tecnología", "Juegos", "Baile", "Comida", "Otro"];
     //cantidad = [80, 137, 108, 18, 34, 115, 142, 152, 158, 171];
 
-    let barColors = [
-      "#022F40",
-      "#546363",
-      "#846C5B",
-      "#ECE7AC",
-      "#74D3AE",
-      "#7A9CC6",
-      "#F49CBB",
-      "#D8A7CA",
-      "#F7B2AD",
-      "#9368B7"
+//  let barColors = [
+//    "#022F40",
+//    "#546363",
+//    "#846C5B",
+//    "#ECE7AC",
+//    "#74D3AE",
+//    "#7A9CC6",
+//    "#F49CBB",
+//    "#D8A7CA",
+//    "#F7B2AD",
+//    "#9368B7"
 
-    ];
+//  ];
 
-    new Chart("torta", {
-      type: "pie",
-      data: {
-        labels: temas,
-        datasets: [{
-          backgroundColor: barColors,
-          data: cantidad
-        }]
-      },
-      options: {
-        title: {
-          display: false,
-          text: "Cantidad de actividades totales según categoría"
-        }
+//  new Chart("torta", {
+//    type: "pie",
+//    data: {
+//      labels: temas,
+//      datasets: [{
+//        backgroundColor: barColors,
+//        data: cantidad
+//      }]
+//    },
+//    options: {
+//      title: {
+//        display: false,
+//        text: "Cantidad de actividades totales según categoría"
+//      }
 
-      }
-    });
+//    }
+//  });
 
 
     // grafico de barras #####################################################
 
-    let manhana;
-    let mediodia;
-    let tarde;
+    //let manhana;
+    //let mediodia;
+    //let tarde;
 
     // AJAX ================================================
-    let xhr3 = new XMLHttpRequest();
-    xhr3.onreadystatechange = function () {
-      if (xhr3.readyState === 4 && xhr3.status === 200) {
-        let response = xhr3.responseText;
-        response = JSON.parse(response);
-        console.log(response);
-        manhana = response[0]['manhana'];
-        mediodia = response[0]['mediodia'];
-        tarde = response[0]['tarde'];
-        console.log(manhana);
-        console.log(mediodia);
-        console.log((tarde))
-      }
-    }
+    //let xhr3 = new XMLHttpRequest();
+    //xhr3.onreadystatechange = function () {
+    //  if (xhr3.readyState === 4 && xhr3.status === 200) {
+    //    let response = xhr3.responseText;
+    //    response = JSON.parse(response);
+    //    console.log("estadisticas.html:" +response);
+    //    manhana = response[0]['manhana'];
+    //    mediodia = response[0]['mediodia'];
+    //    tarde = response[0]['tarde'];
+    //    console.log("estadisticas.html:" +manhana);
+    //    console.log("estadisticas.html:" +mediodia);
+    //    console.log("estadisticas.html:" +(tarde))
+    //  }
+    //}
+//
+    //xhr3.open("GET", "./cgi-bin/grafico_barra.py", false);
+    //xhr3.send();
 
-    xhr3.open("GET", "./cgi-bin/grafico_barra.py", false);
-    xhr3.send();
-
-    console.log(manhana);
-    console.log(tarde);
-    console.log((mediodia))
+    console.log("estadisticas.html:" +manhana);
+    console.log("estadisticas.html:" +tarde);
+    console.log("estadisticas.html:" +mediodia);
 
     new Chart("barra", {
       type: "bar",

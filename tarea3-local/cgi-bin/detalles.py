@@ -32,7 +32,7 @@ def createActividadInfo(datos, region, fotos, contactos):
     descripcion = datos[8]
     tema = datos[9]
 
-    informacion = open(f"./actividad{actividad}.html", mode="w+", encoding="utf-8")
+    informacion = open(f"../actividad{actividad}.html", mode="w+", encoding="utf-8")
 
     head = """
                 <head>

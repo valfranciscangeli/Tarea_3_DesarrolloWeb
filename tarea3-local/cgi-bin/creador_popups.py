@@ -26,7 +26,7 @@ for id_ in comunas_id:
 # abrimos el template de la informacion de cada marcador, el total se guardara en marcadores
 
 marcadores = ""
-formato_popup = open("./templates/popup-tmp.html", mode="r", encoding="utf-8").read()
+formato_popup = open("../templates/popup-tmp.html", mode="r", encoding="utf-8").read()
 """
         formato: 
         0: coordenada 1
@@ -42,13 +42,13 @@ formato_popup = open("./templates/popup-tmp.html", mode="r", encoding="utf-8").r
 fotos por comuna ej: {80103: 1}
 """
 
-f = open("./js/chile2.json", mode='r', encoding="utf-8")
+f = open("../js/chile2.json", mode='r', encoding="utf-8")
 data = json.load(f)
 """
 data ejemplo: {'name': 'Laguna Blanca', 'lng': '-71.9166667', 'lat': '-52.2500000', 'id':12345}
 """
 
-tabla = open("./templates/map-list-tmp.html", mode='r', encoding='utf-8').read()
+tabla = open("../templates/map-list-tmp.html", mode='r', encoding='utf-8').read()
 
 
 def crearInfoMapa(id_actividad):
@@ -96,4 +96,4 @@ for elemento in data:
                                            contador)
         contador += 1
 
-print(marcadores)
+#print(marcadores)

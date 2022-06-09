@@ -14,7 +14,7 @@ from db import DB
 # print()
 # sys.stdout.reconfigure(encoding="utf-8")
 
-db = DB("localhost", "root", "", "tarea3")
+db = DB('localhost', 'root', '', 'tarea3')
 
 # form = cgi.FieldStorage()
 # name = form.getvalue("nombreDr")
