@@ -152,3 +152,10 @@ cython_debug/
 #.idea/
 tarea3-local/actividad45.html
 tarea3-local/media/afe50dea8c6c1479abdeedf2b595fc_15
+
+
+# exclude everything
+tarea3-local/media/*
+
+# exception to the rule
+!tarea3-local/media/.gitkeep 
