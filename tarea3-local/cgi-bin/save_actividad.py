@@ -11,13 +11,13 @@ from db import DB
 
 print("Content-type: text/html; charset=UTF-8")
 print()
-# sys.stdout.reconfigure(encoding='utf-8')
+sys.stdout.reconfigure(encoding='utf-8')
 
 db = DB('localhost', 'root', '', 'tarea3')
-form = cgi.FieldStorage()
-# print(form)
 
-template = open('./templates/respuesta-recibida.html', mode='r',
+form = cgi.FieldStorage()
+
+template = open('../templates/respuesta-recibida.html', mode='r',
                 encoding="utf-8").read()  # abrimos el template de respuesta
 
 

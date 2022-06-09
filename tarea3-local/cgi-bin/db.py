@@ -173,7 +173,7 @@ class DB:
                 # no worries.
 
                 # guarda el archivo localmente
-                open(f"media/{filename_hash}", "wb").write(fileobj.file.read())
+                open(f"../media/{filename_hash}", "wb").write(fileobj.file.read())
                 sql_file = '''
                             INSERT INTO foto (ruta_archivo, nombre_archivo, actividad_id) 
                             VALUES (%s, %s, %s)
