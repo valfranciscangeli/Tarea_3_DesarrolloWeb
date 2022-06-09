@@ -1,14 +1,12 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
 
-import sys
-import os
-
-import cgi
-
 import hashlib
+import sys
 
 import mysql.connector
+
+sys.stdout.reconfigure(encoding='utf-8')
 
 
 class DB:
@@ -41,7 +39,7 @@ class DB:
                 INSERT INTO contactar_por (nombre, identificador, actividad_id) VALUES (%s, %s, %s);
              '''
         self.cursor.execute(sql, contacto_info)
-        # self.db.commit()
+        #self.db.commit()
 
     def guardar_actividad(self, actividad):
         # recibe un diccionario
@@ -73,7 +71,7 @@ class DB:
                    actividad['descripcion'],
                    actividad['tema'])
         self.cursor.execute(sql, valores)  # ejecuta la consulta
-        # self.db.commit()
+        #self.db.commit()
         id_actividad = self.cursor.getlastrowid()
         return id_actividad
 
@@ -173,7 +171,7 @@ class DB:
                 # no worries.
 
                 # guarda el archivo localmente
-                open(f"../media/{filename_hash}", "wb").write(fileobj.file.read())
+                open(f"media/{filename_hash}", "wb").write(fileobj.file.read())
                 sql_file = '''
                             INSERT INTO foto (ruta_archivo, nombre_archivo, actividad_id) 
                             VALUES (%s, %s, %s)
@@ -188,7 +186,7 @@ class DB:
             print("ERROR AL GUARDAR EN LA BASE DE DATOS")
             sys.exit()
 
-        # =============================================================
+         # =============================================================
 
     def get_data_portada(self):
         sql = '''

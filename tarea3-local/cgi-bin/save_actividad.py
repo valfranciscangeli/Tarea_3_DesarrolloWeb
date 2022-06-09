@@ -1,23 +1,21 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
-
-import sys
-import os
-
 import cgi
+import os
 import re
+import sys
 
 from db import DB
 
 print("Content-type: text/html; charset=UTF-8")
 print()
-sys.stdout.reconfigure(encoding='utf-8')
+# sys.stdout.reconfigure(encoding='utf-8')
 
 db = DB('localhost', 'root', '', 'tarea3')
-
 form = cgi.FieldStorage()
+# print(form)
 
-template = open('../templates/respuesta-recibida.html', mode='r',
+template = open('./templates/respuesta-recibida.html', mode='r',
                 encoding="utf-8").read()  # abrimos el template de respuesta
 
 
@@ -78,7 +76,7 @@ else:
                '130226', '130227', '130228', '130229', '130230', '130231', '130232', '130301', '130302', '130303',
                '130401', '130402', '130403', '130404', '130501', '130502', '130503', '130504', '130601', '130602',
                '130603', '130604', '130605', '130606']
-
+    
     if comuna not in comunas:
         errores += '<li>Ha seleccionado una COMUNA no permitida.</li>'
 
@@ -248,7 +246,7 @@ if 'contactar-por' in form:  # si no se selecciona en el checkbox no hay contact
 # ========================================================
 
 if len(errores) > largo_inicial:
-    print(template.format(errores, '') + ' </div>  </div> <br> <br>')
+    print(template.format(errores,'') + ' </div>  </div> <br> <br>')
     sys.exit()
 
 """ ================================================================ 
@@ -296,4 +294,4 @@ todoOk = """
             <h3>HobbyApp te desea mucho éxito.</h3>
 """
 
-print(template.format(todoOk, '  <meta http-equiv="refresh" content="1; url=./portada.py">'))
+print(template.format(todoOk,'  <meta http-equiv="refresh" content="1; url=./portada.py">'))
