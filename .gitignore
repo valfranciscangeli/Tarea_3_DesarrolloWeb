@@ -157,6 +157,7 @@ tarea3-local/media/afe50dea8c6c1479abdeedf2b595fc_15
 # exclude everything
 tarea3-local/media/*
 tarea3-local/actividad*.html
+tarea3-local/ex-estadisticas.html
 
 # exception to the rule
 !tarea3-local/media/.gitkeep 
