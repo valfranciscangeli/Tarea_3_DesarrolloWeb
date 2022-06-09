@@ -1,0 +1,29 @@
+/* Hoja de estilo para página de datos de formulario recibidos. 
+Por Valeria Vallejos Franciscangeli 
+Para CC5002- Otoño 2022 */
+
+
+/* =========================INICIO DEL DOCUMENTO================================ */
+
+.w3-section h1 {
+    text-align: center;
+    font-weight: bold;
+}
+
+.w3-section h2 {
+    text-align: center;
+    font-style: oblique;
+}
+
+.w3-section h3 {
+    text-align: center;
+}
+
+.w3-section ul {
+    text-align: center;
+    font-style: oblique;
+}
+
+.w3-section li {
+    text-align: center;
+}

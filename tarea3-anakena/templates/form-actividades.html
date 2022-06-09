@@ -1,46 +1,55 @@
-#!/usr/bin/python3
-# -*- coding: utf-8 -*-
+<!-- /* Código HTML para formulario de ingreso de actividades. 
 
-import sys
-import os
+El documento puede contener inserción de CSS y Javascript según necesidad para mayor claridad y/o simplicidad de programación.
 
-import cgi
+Por Valeria Vallejos Franciscangeli 
+Para CC5002- Otoño 2022 */
 
-from db import DB
 
-print("Content-type: text/html; charset=UTF-8")
-print()
-sys.stdout.reconfigure(encoding='utf-8')
+/* =========================INICIO DEL DOCUMENTO================================ */ -->
 
-db = DB('localhost', 'root', '', 'tarea3')
+<!DOCTYPE html>
+<html lang="en">
 
-# ======================== CREAMOS OPCIONES DE SELECT =================================
-regiones_opt = ""
-regiones = db.get_regiones()
-for region in regiones:
-    regiones_opt += f"                  <option value='{region[0]}'>{region[1].title()}</option>\n"
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-comunas_opt = ""
-comunas = db.get_comunas(region[0])
-for comuna in comunas:
-    comunas_opt += f"                   <option value='{comuna[0]}'>{comuna[1].title()}</option>\n"
+    <script src="js/form-actividades.js"></script>
+    <link rel="stylesheet" href="css/style-form-actividades.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-blue-grey.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css">
 
-temas_opt = ""
-temas = db.get_temas()
-for tema in temas:
-    temas_opt += f"                    <option value='{tema[0]}'>{tema[1].title()}</option>\n"
-temas_opt += "                    <option value='otro'>Otro</option>"
+    <title>HobbyApp - Agregar actividad</title>
+    <link rel="icon" href="img/icono-nf2.png" type="image/icon"> <!-- icono-->
+</head>
 
-# ======================== CREAMOS PARTES DEL FORMULARIO =================================
-head_footer = open('./templates/header+footer_formulario.html', mode='r', encoding='utf-8').read()
+<body onload="fecha()">
 
-titulo = "HobbyApp - Agregar actividad"
+    <!--- links -->
+    <div class="w3-bar w3-theme-light">
+        <a href="../cgi-bin/portada.py" class="w3-bar-item w3-button w3-padding-16">Inicio</a>
+        <a href="../cgi-bin/formulario.py" class="w3-bar-item w3-button w3-padding-16">Informar actividad</a>
+        <a href=../cgi-bin/listado.py class="w3-bar-item w3-button w3-padding-16">Ver listado de Actividades</a>
+        <a href=../estadisticas.html class="w3-bar-item w3-button w3-padding-16">Estadísticas</a>
+    </div>
 
-funcion = "onload='fecha()'"
 
-form1 = """
-     <div class="w3-container">
-        <form id="formulario" class="w3-container w3-card-4" action="save_actividad.py" method="POST" enctype = "multipart/form-data">
+    <!-- Header -->
+    <header class="w3-container w3-theme w3-padding" id="myHeader">
+        <div class="w3-center">
+            <h1 class="w3-xxxlarge w3-animate-bottom">HobbyApp</h1>
+            <h4>Bienvenide a HobbyApp! Aquí puedes encontrar entretenidas actividades para conectarte con tu comunidad y
+                crear nuevas amistades</h4>
+        </div>
+    </header>
+
+    <!-- ###########################################33 -->
+
+    <div class="w3-container">
+        <form id="formulario" class="w3-container w3-card-4" action="save_actividad.py" method="POST">
             <h2>Ingresa una nueva actividad:</h2>
 
             <!-- ########### seccion 1 ########### -->
@@ -52,24 +61,30 @@ form1 = """
                 <label for="region">Región(*):</label>
                 <select name="region" id="region" onchange="input_comuna()">
                     <option value="" disabled selected>Seleccione una región</option>
-"""
-
-form1 += regiones_opt
-
-form1 += """
-    </select>
+                    <option value="tarapaca">I Región de Tarapacá</option>
+                    <option value="antofagasta">II Región de Antofagasta</option>
+                    <option value="atacama">III Región de Atacama</option>
+                    <option value="coquimbo">IV Región de Coquimbo</option>
+                    <option value="valparaiso">V Región de Valparaíso</option>
+                    <option value="ohiggins">VI Región del Libertador General Bernardo O’Higgins</option>
+                    <option value="maule">VII Región del Maule</option>
+                    <option value="biobio">VIII Región del Biobío</option>
+                    <option value="araucania">IX Región de La Araucanía</option>
+                    <option value="lagos">X Región de Los Lagos</option>
+                    <option value="aysen">XI Región Aysén del General Carlos Ibáñez del Campo</option>
+                    <option value="magallanes">XII Región de Magallanes y Antártica Chilena</option>
+                    <option value="santiago">Región Metropolitana de Santiago</option>
+                    <option value="rios">XIV Región de Los Ríos</option>
+                    <option value="arica">XV Región de Arica y Parinacota</option>
+                    <option value="nuble">XVI Región de Ñuble</option>
+                </select>
             </div>
 
             <!-- comuna -->
             <div class="w3-section">
                 <label for="comuna">Comuna(*):</label>
                 <select name="comuna" id="comuna"></select><br>
-"""
-
-# form1+= comunas_opt
-
-form1 += """
-    </div>
+            </div>
 
             <!-- sector -->
             <div class="w3-section">
@@ -158,7 +173,9 @@ form1 += """
                         onclick="agregaUsuarioURL('otro', 'otro-input')">
                     <label for="otro">Otro</label>
                     <div id="otro-input" style="display:none">
-                        <label for="otro-usuario">URL:</label>
+                        <label for="otra-red">Red Social:</label>
+                        <input type="text" name="otra-red" id="otra-red">
+                        <label for="otro-usuario">Usuario / URL:</label>
                         <input type="text" name="otro-usuario" id="otro-usuario">
                     </div> <br>
 
@@ -191,12 +208,17 @@ form1 += """
                 <label for="tema">Tema(*):</label>
                 <select name="tema" id="tema" onchange="nuevo_tema()">
                     <option value="" disabled selected>Seleccione un tema</option>
-            """
-
-form1 += temas_opt
-
-form1 += """
-                    </select>
+                    <option value="musica">Música</option>
+                    <option value="deporte">Deporte</option>
+                    <option value="ciencias">Ciencias</option>
+                    <option value="religion">Religión</option>
+                    <option value="politica">Política</option>
+                    <option value="tecnologia">Tecnología</option>
+                    <option value="juegos">Juegos</option>
+                    <option value="baile">Baile</option>
+                    <option value="comida">Comida</option>
+                    <option value="otro">Otro</option>
+                </select>
                 <div id="otro_tema"></div>
             </div> <br>
 
@@ -243,10 +265,23 @@ form1 += """
             </div>
         </div>
     </div>
-"""
 
-js = """
-<script>
+
+    <!-- ########################## final de la pagina ################################ -->
+
+    <!-- Footer -->
+    <footer class="w3-container w3-theme-dark w3-padding-16">
+        <h3>HobbyApp - 2022</h3>
+        <p>Plantillas de <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
+        <div style="position:relative;bottom:55px;" class="w3-tooltip w3-right">
+            <span class="w3-text w3-theme-light w3-padding">Go To Top</span> 
+            <a class="w3-text-white" href="#myHeader"><span class="w3-xlarge">
+                    <i class="fa fa-chevron-circle-up"></i></span></a>
+        </div>
+    </footer>
+
+
+    <script>
         // ###################### confirmacion de envio del formulario   ################################
         document.getElementById("formulario").addEventListener("submit", submit);
         document.getElementById("ok").addEventListener("click", enviar);
@@ -278,7 +313,6 @@ js = """
             document.getElementById("capa").style.display = "none";
         }
     </script>
-"""
+</body>
 
-# ======================= PRINT FINAL ==================================
-print(head_footer.format(titulo, funcion, form1, js))
+</html>

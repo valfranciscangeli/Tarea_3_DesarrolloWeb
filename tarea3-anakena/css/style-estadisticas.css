@@ -1,0 +1,16 @@
+/* Hoja de estilo para página de gráficos. 
+Por Valeria Vallejos Franciscangeli 
+Para CC5002- Otoño 2022 */
+
+
+/* =========================INICIO DEL DOCUMENTO================================ */
+
+.grafico {
+    width: 100%;
+    max-width: 800px;
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    display: block
+}

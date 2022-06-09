@@ -1,0 +1,59 @@
+/* Hoja de estilo para portada de Tarea 1. 
+Por Valeria Vallejos Franciscangeli 
+Para CC5002- Otoño 2022 */
+
+/* =========================INICIO DEL DOCUMENTO================================ */
+#map { height: 180px; }
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: "Lato", sans-serif
+}
+
+.foto {
+    width: 320px;
+    height: 240px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.w3-bar,
+h1,
+button {
+    font-family: "Montserrat", sans-serif
+}
+
+.fa-anchor,
+.fa-coffee {
+    font-size: 200px
+}
+
+
+.titulo {
+    text-align: center;
+    color: #222626;
+}
+
+.sub {
+    text-align: center;
+}
+
+table,
+th,
+td {
+    border: 1px solid black;
+    background-color: rgb(243, 231, 215);
+    text-align: center;
+}
+
+.menu_opciones {
+    text-align: center;
+}
+
+/* ============================================== */

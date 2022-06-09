@@ -12,7 +12,7 @@ print("Content-type: text/html; charset=UTF-8")
 print()
 sys.stdout.reconfigure(encoding='utf-8')
 
-db = DB('localhost', 'root', '', 'tarea3')
+db = DB('localhost', 'cc500279_u', 'llainInhac', 'cc500279_db')
 
 # ======================== CREAMOS OPCIONES DE SELECT =================================
 regiones_opt = ""
@@ -32,7 +32,10 @@ for tema in temas:
 temas_opt += "                    <option value='otro'>Otro</option>"
 
 # ======================== CREAMOS PARTES DEL FORMULARIO =================================
-head_footer = open('./templates/header+footer_formulario.html', mode='r', encoding='utf-8').read()
+#directory = os.getcwd()
+#print(directory)
+
+head_footer = open('../templates/header+footer_formulario.html', mode='r', encoding='utf-8').read()
 
 titulo = "HobbyApp - Agregar actividad"
 

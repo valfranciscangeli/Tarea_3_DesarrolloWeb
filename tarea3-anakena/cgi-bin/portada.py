@@ -15,7 +15,7 @@ print("Content-type: text/html; charset=UTF-8")
 print()
 sys.stdout.reconfigure(encoding='utf-8')
 
-db = DB('localhost', 'root', '', 'tarea3')
+db = DB('localhost', 'cc500279_u', 'llainInhac', 'cc500279_db')
 
 """
 -- seleccionar ultimas 5 actividades agregadas, con nombre de comuna y nombre de tema:
@@ -61,7 +61,7 @@ header_tabla = """
 
 tabla += header_tabla
 
-fila_tabla = open("./templates/fila-tabla-portada.html", mode="r", encoding="utf-8").read()
+fila_tabla = open("../templates/fila-tabla-portada.html", mode="r", encoding="utf-8").read()
 
 for p in data:
     """
@@ -96,10 +96,12 @@ tabla += """
     """
 
 
-with open('./templates/header+footer_portada.html', mode='r', encoding="utf-8") as template:
+with open('../templates/header+footer_portada.html', mode='r', encoding="utf-8") as template:
     file = template.read()
     print(file.format(tabla, creador_popups.marcadores))
 
 # ========================
+
 detalles.crearDetalles()
+
 # =======================
