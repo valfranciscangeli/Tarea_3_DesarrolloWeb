@@ -159,6 +159,11 @@ tarea3-local/media/*
 tarea3-local/actividad*.html
 tarea3-local/ex-estadisticas.html
 tarea3-local/mapa.html
+tarea3-anakena/media/*
+tarea3-anakena/actividad*.html
+tarea3-anakena/ex-estadisticas.html
+tarea3-anakena/mapa.html
 
 # exception to the rule
 !tarea3-local/media/.gitkeep 
+!tarea3-local/anakena/.gitkeep 
