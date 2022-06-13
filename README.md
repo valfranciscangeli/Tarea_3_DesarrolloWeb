@@ -21,15 +21,16 @@ Novedades:
 - Se agrega una característica de geolocalización del usuario para que el centro del mapa se encuentre en su ubicación para que asi pueda revisar más fácilmente las actividades cercanas a él. 
 - Normalmente, el navegador pedirá confirmar si se desea compartir la ubicación. De no permitirse, el mapa se centrará en la ubicación de la Facultad de Ciencias Físicas y Matemáticas.
 - Los marcadores azules corresponden a actividades, el rojo a la ubicación del usuario y el color oro a la FCFM.
-- Al clickear sobre cualquier lugar del mapa se despliega un pop-up con las coordenadas del lugar.
+- Al cliquear sobre cualquier lugar del mapa se despliega un pop-up con las coordenadas del lugar.
 
 ##### Gráficos:
 - Para esta versión se agrega a las gráficas (antes con datos fijos) la información obtenida desde la base de datos utilizando AJAX. 
 - Se utiliza Chat.js para los 3 tipos de gráficos.
 - Si uno de los gráficos no aparece, es probable que se deba a la demora de la petición XHR, por lo que simplemente se debe esperar a que esta se termine de realizar. 
-- Los colores del gráfico de torta varían por cada recarga de la página, es decir, los colores de cada tema van cambiando.
+- Los colores del gráfico de torta varían aleatoriamente por cada carga, es decir, los colores de cada tema van cambiando.
 - Los gráficos con etiquetas permiten cliquear sobre una o varias de ellas para ocultar la información relacionada sobre el gráfico. Para volver a ver dicha información simplemente volver a cliquear.
 - Gracias a las funciones de Chart.js, las gráficas son interactivas, por lo que al pasar el cursor sobre el mapa se puede ver más detalles de los datos.
+- Para recargar un mapa y ver posibles nuevos datos agregados a la Base de Datos se debe volver a cliquear la pestaña correspondiente.
 
 
  Home page en anakena de la tarea 3: https://anakena.dcc.uchile.cl/~vfrancis/cgi-bin/tarea3/
