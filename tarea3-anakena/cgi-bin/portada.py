@@ -39,7 +39,7 @@ data = db.get_data_portada()  # retorna una lista de tuplas formato (nombre, exp
 tabla = ""
 
 header_tabla = """
-             <div class="w3-container">
+        <div class="w3-container">
         <hr>
         <div class="w3-center">
             <h2>Actividades recientemente agregadas</h2>
@@ -91,6 +91,7 @@ for p in data:
 tabla += """
     </tbody>
     </table>
+    </div> 
     </div> 
     <br>
     """

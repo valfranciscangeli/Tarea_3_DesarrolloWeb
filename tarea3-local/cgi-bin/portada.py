@@ -92,6 +92,7 @@ tabla += """
     </tbody>
     </table>
     </div> 
+    </div> 
     <br>
     """
 

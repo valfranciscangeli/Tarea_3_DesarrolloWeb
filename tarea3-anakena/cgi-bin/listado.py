@@ -133,7 +133,7 @@ header = '''
         '''
 
 paginador = f'''
-            <form action="listado.py" method="get" enctype='multipart/data'>
+            <form action="listado.py" method="get">
                 {botones}
             </form>
             '''
